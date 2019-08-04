@@ -1037,8 +1037,8 @@
 <ul>
 <li>深度学习框架的官方支持不够及时，TensorFlow 于 2015年11月发布，但是一年之后才首次支持 Windows：<a href="https://github.com/tensorflow/tensorflow/releases/tag/0.12.0-rc0">TensorFlow now builds and runs on Microsoft Windows</a></li>
 <li>其他学者开发的新模型的代码通常需要进行修改才能在 Windows 上运行，如果他们的代码涉及 CUDA 编程，这种修改会很困难</li>
-<li>路径的斜杠与其他操作系统不同，Windows 使用的是 <code class="codehilite">\</code>，容易作为转义字符解析成其他字符导致 bug</li>
-<li>换行符与其他操作系统不同，Windows 使用的不是 <code class="codehilite">\n</code>，而是 <code class="codehilite">\r\n</code></li>
+<li>路径的斜杠与其他操作系统不同，Windows 使用的是 <code class="codehilite"><span class="err">\</span></code>，容易作为转义字符解析成其他字符导致 bug</li>
+<li>换行符与其他操作系统不同，Windows 使用的不是 <code class="codehilite"><span class="err">\</span><span class="n">n</span></code>，而是 <code class="codehilite"><span class="err">\</span><span class="n">r</span><span class="err">\</span><span class="n">n</span></code></li>
 <li>命令行与其他操作系统不同，许多命令功能一样，但是名字不同，比如 ifconfig 与 ipconfig，rm 与 del 等</li>
 </ul>
 <p><strong>为了能够使用大多数深度学习工程师开源的代码，我们建议使用 Ubuntu 作为运行代码的机器。</strong></p>

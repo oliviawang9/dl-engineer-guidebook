@@ -1777,12 +1777,12 @@ sudo apt install openssh-server
 <p>使用到的命令：<a href="../linux-command/#apt">apt</a>、<a href="../linux-command/#ssh">ssh</a></p>
 <h3 id="ssh-keygen-ssh-key">使用 ssh-keygen 生成一个 ssh key</h3>
 <p>目前使用密码上不如使用 key 安全的，因为 key 的长度通常是 2048 或 4096 位，远超普通的密码。这里建议按照 GitHub 官方网站上的教程<a href="https://help.github.com/cn/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent">生成新 SSH 密钥并添加到 ssh-agent</a>，这样不仅可以用于登录 Linux 机器，也可以用于 git。</p>
-<p>使用 <code class="codehilite">ssh-keygen</code> 生成了密钥以后，你会得到两个文件：</p>
+<p>使用 <code class="codehilite"><span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span></code> 生成了密钥以后，你会得到两个文件：</p>
 <ul>
-<li><code class="codehilite">~/.ssh/id_rsa</code></li>
-<li><code class="codehilite">~/.ssh/id_rsa.pub</code></li>
+<li><code class="codehilite"><span class="o">~/</span><span class="p">.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa</span></code></li>
+<li><code class="codehilite"><span class="o">~/</span><span class="p">.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_rsa</span><span class="p">.</span><span class="n">pub</span></code></li>
 </ul>
-<p>其中 <code class="codehilite">id_rsa</code> 是私钥，<code class="codehilite">id_rsa.pub</code> 是公钥。不要把私钥发给任何人。</p>
+<p>其中 <code class="codehilite"><span class="n">id_rsa</span></code> 是私钥，<code class="codehilite"><span class="n">id_rsa</span><span class="p">.</span><span class="n">pub</span></code> 是公钥。不要把私钥发给任何人。</p>
 <p>​公钥通常上这样的文本：</p>
 <blockquote>
 <p>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDcfQD4nnaQrgC003C0ReAYqrm6XKEchuM6DwkNtHzRs2YhLolH6fEohWAp0mlW9yzQl258lA+FdoH51ONmvGUx/2Y953A6ujHrt7dOIpOkYW5HT6Rmvlwk+3uRmVNQqZTJeRWdblcSHmYY1fi1miawONZiVoLW14xhyH5bOwgwY/GB2yTaffDby451RLT5kQ7LHqiDJtWiRQekR5tKDKZ7mBhKZIKYLOoqAayCHw2scJYsgtw2tPt0/y7BlxO+RuDwuD2WOnthe1ewbwAbbTN17HiLvBd/MIWtVDoGGq6jdNDjNDNbTs8H2VohTc2mNtOOlycN6yzf3ZKZTN6/hNtl ypw@yangpeiendeiMac</p>
@@ -1793,7 +1793,7 @@ sudo apt install openssh-server
 </pre></div>
 
 
-<p>然后创建 <code class="codehilite">~/.ssh</code> 目录，并且创建 <code class="codehilite">~/.ssh/authorized_keys</code> 文件，配置好相应的权限：</p>
+<p>然后创建 <code class="codehilite"><span class="o">~/</span><span class="p">.</span><span class="n">ssh</span></code> 目录，并且创建 <code class="codehilite"><span class="o">~/</span><span class="p">.</span><span class="n">ssh</span><span class="o">/</span><span class="n">authorized_keys</span></code> 文件，配置好相应的权限：</p>
 <div class="codehilite"><pre><span></span>mkdir -p ~/.ssh
 touch ~/.ssh/authorized_keys
 chmod <span class="m">700</span> ~/.ssh
@@ -1804,7 +1804,7 @@ nano ~/.ssh/authorized_keys
 </pre></div>
 
 
-<p>把刚才生成的公钥 <code class="codehilite">id_rsa.pub</code> 添加到 <code class="codehilite">~/.ssh/authorized_keys</code> 里，如果文件已经有内容，就添加在最后一行。这样以后<strong>每次使用 ssh 登录机器都不需要再输入密码了</strong>。</p>
+<p>把刚才生成的公钥 <code class="codehilite"><span class="n">id_rsa</span><span class="p">.</span><span class="n">pub</span></code> 添加到 <code class="codehilite"><span class="o">~/</span><span class="p">.</span><span class="n">ssh</span><span class="o">/</span><span class="n">authorized_keys</span></code> 里，如果文件已经有内容，就添加在最后一行。这样以后<strong>每次使用 ssh 登录机器都不需要再输入密码了</strong>。</p>
 <p>使用到的命令：<a href="../linux-command/#mkdir">mkdir</a>、<a href="../linux-command/#touch">touch</a>、<a href="../linux-command/#chmod">chmod</a>、<a href="../linux-command/#nano">nano</a></p>
 <h3 id="_1">禁止密码登录</h3>
 <p>由于密码登录存在不安全因素，比如暴露在公网的 IP 会被扫描，而 key 是相对安全的，所以我们可以禁止不安全的密码登录：</p>
@@ -1953,7 +1953,7 @@ Acquire::http::Proxy <span class="s2">&quot;http://192.168.8.246:1087&quot;</spa
 
 
 <h3 id="_4">配置环境变量</h3>
-<p>安装好以后还需要<a href="../linux-command/#export">配置环境变量</a>，这里我以 <code class="codehilite">~/.zshrc</code> 为例：</p>
+<p>安装好以后还需要<a href="../linux-command/#export">配置环境变量</a>，这里我以 <code class="codehilite"><span class="o">~/</span><span class="p">.</span><span class="n">zshrc</span></code> 为例：</p>
 <div class="codehilite"><pre><span></span>nano ~/.zshrc
 
 <span class="c1"># 添加下面的内容</span>
@@ -2006,7 +2006,7 @@ sudo reboot
 <h3 id="_6">安装必要的编译工具</h3>
 <p>如果没有安装 gcc 等编译工具，就会出现以下提示：</p>
 <blockquote>
-<p>ERROR: Unable to find the development tool <code class="codehilite">cc</code> in your path; please make sure that you have the package 'gcc' installed. If gcc is installed on your system, then please check that <code class="codehilite">cc</code> is in your PATH.</p>
+<p>ERROR: Unable to find the development tool <code class="codehilite"><span class="n">cc</span></code> in your path; please make sure that you have the package 'gcc' installed. If gcc is installed on your system, then please check that <code class="codehilite"><span class="n">cc</span></code> is in your PATH.</p>
 </blockquote>
 <p>命令：</p>
 <div class="codehilite"><pre><span></span>sudo apt install -y build-essential gcc g++ make binutils linux-headers-<span class="sb">`</span>uname -r<span class="sb">`</span>
@@ -2099,7 +2099,7 @@ Samples:  Not Selected
 <li>LD_LIBRARY_PATH includes /usr/local/cuda-10.0/lib64, or, add /usr/local/cuda-10.0/lib64 to /etc/ld.so.conf and run ldconfig as root</li>
 </ul>
 </blockquote>
-<p>需要按照上面的指示<a href="../linux-command/#export">配置环境变量</a>，这里我以 <code class="codehilite">~/.zshrc</code> 为例：</p>
+<p>需要按照上面的指示<a href="../linux-command/#export">配置环境变量</a>，这里我以 <code class="codehilite"><span class="o">~/</span><span class="p">.</span><span class="n">zshrc</span></code> 为例：</p>
 <div class="codehilite"><pre><span></span>nano ~/.zshrc
 
 <span class="c1"># 添加下面的内容</span>
@@ -2114,7 +2114,7 @@ Samples:  Not Selected
 </pre></div>
 
 
-<p>然后安装到 <code class="codehilite">/usr/local</code> 目录下：</p>
+<p>然后安装到 <code class="codehilite"><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span></code> 目录下：</p>
 <div class="codehilite"><pre><span></span>sudo tar -xzf cudnn-10.0-linux-x64-v7.6.0.64.tgz -C /usr/local
 </pre></div>
 
@@ -2178,7 +2178,7 @@ Thank you <span class="k">for</span> installing Anaconda3!
 </pre></div>
 
 
-<p>配置好以后，可以重启机器，或者使用 <code class="codehilite">source ~/.zshrc</code> <a href="../linux-command/#source">更新环境变量</a>。</p>
+<p>配置好以后，可以重启机器，或者使用 <code class="codehilite"><span class="k">source</span> <span class="o">~/</span><span class="p">.</span><span class="n">zshrc</span></code> <a href="../linux-command/#source">更新环境变量</a>。</p>
 <h3 id="pip">配置 pip 源</h3>
 <p>在使用 pip 的时候有可能因为网络原因导致安装过慢或失败，这时候可以配置一些 pip 源：</p>
 <ul>

@@ -1,0 +1,1794 @@
+
+
+
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="这篇文章主要介绍的是家用的深度学习工作站，典型的配置有两种，分别是一个 GPU 的机器和 四个 GPU的机器。如果需要更多的 GPU 可以考虑配置两台四个 GPU 的机器。如果希望一台机器同时具备 6~8 个 GPU 需要联系专门的供应商进行配置，并且有专业的机房存放，放在家里噪声很大并且容易跳闸。">
+      
+      
+        <link rel="canonical" href="https://dl.ypw.io/how-to-build-deep-learning-workstation/">
+      
+      
+        <meta name="author" content="杨培文">
+      
+      
+        <meta name="lang:clipboard.copy" content="复制">
+      
+        <meta name="lang:clipboard.copied" content="已复制">
+      
+        <meta name="lang:search.language" content="ja">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="没有找到符合条件的结果">
+      
+        <meta name="lang:search.result.one" content="找到 1 个符合条件的结果">
+      
+        <meta name="lang:search.result.other" content="# 个符合条件的结果">
+      
+        <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.0">
+    
+    
+      
+        <title>如何配置一台深度学习工作站? - 深度学习工程师生存指南</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.0284f74d.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.01803549.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#7cb342">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.74668098.js"></script>
+    
+    
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="light-green" data-md-color-accent="light-green">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#_1" tabindex="1" class="md-skip">
+        跳转至
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="https://dl.ypw.io" title="深度学习工程师生存指南" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              深度学习工程师生存指南
+            </span>
+            <span class="md-header-nav__topic">
+              
+                如何配置一台深度学习工作站?
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            键入以开始搜索
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/ypwhs/dl-engineer-guidebook/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    ypwhs/dl-engineer-guidebook
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+        
+
+  
+
+<nav class="md-tabs md-tabs--active" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  <li class="md-tabs__item">
+    
+      <a href=".." title="首页" class="md-tabs__link">
+        首页
+      </a>
+    
+  </li>
+
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="./" title="硬件" class="md-tabs__link md-tabs__link--active">
+          硬件
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../mac-compare/" title="Mac" class="md-tabs__link">
+          Mac
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../ubuntu-install-guide/" title="Linux" class="md-tabs__link">
+          Linux
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../cv-resources/" title="CV" class="md-tabs__link">
+          CV
+        </a>
+      
+    </li>
+  
+
+      
+        
+  
+  
+    <li class="md-tabs__item">
+      
+        <a href="../how-to-use-tensorboard/" title="使用技巧" class="md-tabs__link">
+          使用技巧
+        </a>
+      
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://dl.ypw.io" title="深度学习工程师生存指南" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    深度学习工程师生存指南
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/ypwhs/dl-engineer-guidebook/" title="前往 Github 仓库" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    ypwhs/dl-engineer-guidebook
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="首页" class="md-nav__link">
+      首页
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        如何配置一台深度学习工作站?
+      </label>
+    
+    <a href="./" title="如何配置一台深度学习工作站?" class="md-nav__link md-nav__link--active">
+      如何配置一台深度学习工作站?
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cpu" title="CPU" class="md-nav__link">
+    CPU
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu-gpu" title="CPU 与 GPU 的关系" class="md-nav__link">
+    CPU 与 GPU 的关系
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pci-e" title="PCI-E 支持情况" class="md-nav__link">
+    PCI-E 支持情况
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cpu_1" title="英特尔CPU" class="md-nav__link">
+    英特尔CPU
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="主板" class="md-nav__link">
+    主板
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" title="主板必看参数" class="md-nav__link">
+    主板必看参数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="带有桥接芯片的主板" class="md-nav__link">
+    带有桥接芯片的主板
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" title="显卡" class="md-nav__link">
+    显卡
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" title="显卡性能表" class="md-nav__link">
+    显卡性能表
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" title="涡轮与风扇" class="md-nav__link">
+    涡轮与风扇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" title="服务器推断卡" class="md-nav__link">
+    服务器推断卡
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" title="硬盘" class="md-nav__link">
+    硬盘
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" title="硬盘类型" class="md-nav__link">
+    硬盘类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" title="参数对比" class="md-nav__link">
+    参数对比
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" title="内存" class="md-nav__link">
+    内存
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" title="电源" class="md-nav__link">
+    电源
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" title="网卡" class="md-nav__link">
+    网卡
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" title="机箱" class="md-nav__link">
+    机箱
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" title="显示器" class="md-nav__link">
+    显示器
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" title="键盘鼠标" class="md-nav__link">
+    键盘鼠标
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../windows-linux-or-macos/" title="Windows、Ubuntu 还是 macOS？" class="md-nav__link">
+      Windows、Ubuntu 还是 macOS？
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../mac-compare/" title="Mac 对比" class="md-nav__link">
+      Mac 对比
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../macos-software/" title="macOS 软件" class="md-nav__link">
+      macOS 软件
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../macos-environment/" title="macOS 环境" class="md-nav__link">
+      macOS 环境
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../python-environment/" title="Python 环境" class="md-nav__link">
+      Python 环境
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../ubuntu-install-guide/" title="Ubuntu 装机步骤" class="md-nav__link">
+      Ubuntu 装机步骤
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../ubuntu-environment/" title="Ubuntu 环境" class="md-nav__link">
+      Ubuntu 环境
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../linux-command/" title="常用 Linux 命令" class="md-nav__link">
+      常用 Linux 命令
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../cv-resources/" title="CV 学习资源" class="md-nav__link">
+      CV 学习资源
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../cv-dataset/" title="常用 CV 数据集" class="md-nav__link">
+      常用 CV 数据集
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../best-models-on-imagenet/" title="在 ImageNet 上表现出色的经典模型" class="md-nav__link">
+      在 ImageNet 上表现出色的经典模型
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../how-to-use-tensorboard/" title="如何使用 TensorBoard" class="md-nav__link">
+      如何使用 TensorBoard
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-15" type="checkbox" id="nav-15" checked>
+    
+    <label class="md-nav__link" for="nav-15">
+      硬件
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-15">
+        硬件
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        如何配置一台深度学习工作站?
+      </label>
+    
+    <a href="./" title="如何配置一台深度学习工作站?" class="md-nav__link md-nav__link--active">
+      如何配置一台深度学习工作站?
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cpu" title="CPU" class="md-nav__link">
+    CPU
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu-gpu" title="CPU 与 GPU 的关系" class="md-nav__link">
+    CPU 与 GPU 的关系
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pci-e" title="PCI-E 支持情况" class="md-nav__link">
+    PCI-E 支持情况
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cpu_1" title="英特尔CPU" class="md-nav__link">
+    英特尔CPU
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="主板" class="md-nav__link">
+    主板
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" title="主板必看参数" class="md-nav__link">
+    主板必看参数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="带有桥接芯片的主板" class="md-nav__link">
+    带有桥接芯片的主板
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" title="显卡" class="md-nav__link">
+    显卡
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" title="显卡性能表" class="md-nav__link">
+    显卡性能表
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" title="涡轮与风扇" class="md-nav__link">
+    涡轮与风扇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" title="服务器推断卡" class="md-nav__link">
+    服务器推断卡
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" title="硬盘" class="md-nav__link">
+    硬盘
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" title="硬盘类型" class="md-nav__link">
+    硬盘类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" title="参数对比" class="md-nav__link">
+    参数对比
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" title="内存" class="md-nav__link">
+    内存
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" title="电源" class="md-nav__link">
+    电源
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" title="网卡" class="md-nav__link">
+    网卡
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" title="机箱" class="md-nav__link">
+    机箱
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" title="显示器" class="md-nav__link">
+    显示器
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" title="键盘鼠标" class="md-nav__link">
+    键盘鼠标
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../windows-linux-or-macos/" title="Windows、Ubuntu 还是 macOS？" class="md-nav__link">
+      Windows、Ubuntu 还是 macOS？
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-16" type="checkbox" id="nav-16">
+    
+    <label class="md-nav__link" for="nav-16">
+      Mac
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-16">
+        Mac
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../mac-compare/" title="Mac 对比" class="md-nav__link">
+      Mac 对比
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../macos-software/" title="macOS 软件" class="md-nav__link">
+      macOS 软件
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../macos-environment/" title="macOS 环境" class="md-nav__link">
+      macOS 环境
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../python-environment/" title="Python 环境" class="md-nav__link">
+      Python 环境
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-17" type="checkbox" id="nav-17">
+    
+    <label class="md-nav__link" for="nav-17">
+      Linux
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-17">
+        Linux
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ubuntu-install-guide/" title="Ubuntu 装机步骤" class="md-nav__link">
+      Ubuntu 装机步骤
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../ubuntu-environment/" title="Ubuntu 环境" class="md-nav__link">
+      Ubuntu 环境
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../python-environment/" title="Python 环境" class="md-nav__link">
+      Python 环境
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../linux-command/" title="常用 Linux 命令" class="md-nav__link">
+      常用 Linux 命令
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-18" type="checkbox" id="nav-18">
+    
+    <label class="md-nav__link" for="nav-18">
+      CV
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-18">
+        CV
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cv-resources/" title="CV 学习资源" class="md-nav__link">
+      CV 学习资源
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../cv-dataset/" title="常用 CV 数据集" class="md-nav__link">
+      常用 CV 数据集
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../best-models-on-imagenet/" title="在 ImageNet 上表现出色的经典模型" class="md-nav__link">
+      在 ImageNet 上表现出色的经典模型
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-19" type="checkbox" id="nav-19">
+    
+    <label class="md-nav__link" for="nav-19">
+      使用技巧
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-19">
+        使用技巧
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../how-to-use-tensorboard/" title="如何使用 TensorBoard" class="md-nav__link">
+      如何使用 TensorBoard
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../remote-debugging-with-pycharm/" title="如何使用 PyCharm 远程调试" class="md-nav__link">
+      如何使用 PyCharm 远程调试
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../docker-is-good/" title="Docker 是个好东西" class="md-nav__link">
+      Docker 是个好东西
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">目录</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#cpu" title="CPU" class="md-nav__link">
+    CPU
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cpu-gpu" title="CPU 与 GPU 的关系" class="md-nav__link">
+    CPU 与 GPU 的关系
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pci-e" title="PCI-E 支持情况" class="md-nav__link">
+    PCI-E 支持情况
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cpu_1" title="英特尔CPU" class="md-nav__link">
+    英特尔CPU
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" title="主板" class="md-nav__link">
+    主板
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" title="主板必看参数" class="md-nav__link">
+    主板必看参数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" title="带有桥接芯片的主板" class="md-nav__link">
+    带有桥接芯片的主板
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" title="显卡" class="md-nav__link">
+    显卡
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" title="显卡性能表" class="md-nav__link">
+    显卡性能表
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" title="涡轮与风扇" class="md-nav__link">
+    涡轮与风扇
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" title="服务器推断卡" class="md-nav__link">
+    服务器推断卡
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" title="硬盘" class="md-nav__link">
+    硬盘
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" title="硬盘类型" class="md-nav__link">
+    硬盘类型
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" title="参数对比" class="md-nav__link">
+    参数对比
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" title="内存" class="md-nav__link">
+    内存
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" title="电源" class="md-nav__link">
+    电源
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" title="网卡" class="md-nav__link">
+    网卡
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" title="机箱" class="md-nav__link">
+    机箱
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" title="显示器" class="md-nav__link">
+    显示器
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" title="键盘鼠标" class="md-nav__link">
+    键盘鼠标
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/ypwhs/dl-engineer-guidebook/blob/mkdocs/docs/how-to-build-deep-learning-workstation.md" title="编辑此页" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="_1">如何配置一台深度学习工作站?</h1>
+<h2 id="cpu">CPU</h2>
+<p>由于最近 AMD 和 Intel 频繁更新 CPU，因此大家选择新款的 CPU 比较好。</p>
+<h3 id="cpu-gpu">CPU 与 GPU 的关系</h3>
+<p>CPU 瓶颈没有那么大，一般以一个 GPU 对应 2~4 个 CPU 核比较好，比如单卡机器买四核 CPU，四卡机器买十核 CPU。</p>
+<p>当你在训练的时候，只要数据生成器（DataLoader）的产出速度比 GPU 的消耗速度快，那么 CPU 就不会成为瓶颈，也就不会拖慢训练速度。</p>
+<h3 id="pci-e">PCI-E 支持情况</h3>
+<p>除了核数，你还需要注意 PCI-E 支持情况，一般显卡是 PCI-E 3.0 x16，比如 <a href="https://ark.intel.com/content/www/cn/zh/ark/products/189121/intel-core-i9-9820x-x-series-processor-16-5m-cache-up-to-4-20-ghz.html">i9-9820X</a> 的 PCI-E 通道数是 44 ，配置四卡的话，只能支持 1x16+3x8+1x4，也就是单卡全速，三卡半速，一个 NVMe 固态硬盘。这种情况下可以考虑选择带有 PLX 桥接芯片的主板。</p>
+<p>AMD 的 <a href="https://www.amd.com/zh-hans/products/cpu/amd-ryzen-threadripper-2990wx">2990WX</a> 有 64条 PCI-E，但是只支持 x16/x8/x16/x8 的四卡配置。</p>
+<h3 id="cpu_1">英特尔CPU</h3>
+<p><img alt="英特尔CPU" src="../imgs/image(2).png" /></p>
+<p>双卡机器选 i9-9900K，四卡机器按照预算选X系列的CPU。</p>
+<h2 id="_2">主板</h2>
+<p>主板需要注意：</p>
+<ul>
+<li>CPU 接口是否能对上，如 LGA2066 和 SocketTR4</li>
+<li>PCI-E 插槽的高度是否够插显卡，比如 PCI-E 插口之间的距离至少要满足<strong>双槽宽显卡的高度</strong></li>
+<li>PCI-E 同时可以支持几张卡以什么样的速度运行，如 1x16 + 3x8 是常见的配置</li>
+</ul>
+<h3 id="_3">主板必看参数</h3>
+<p><a href="https://www.gigabyte.cn/Motherboard/X299-AORUS-MASTER-rev-10">GIGABYTE X299 AORUS MASTER (rev. 1.0)</a> 使用了 4 组 2 槽间距显卡插槽设计，支持 1x16、2x16、2x16 + 1x8、1x16 + 3x8 四种配置（需要十核以上的 CPU），这里请参阅说明书安装显卡，安装在不同位置的速度是不一样的：</p>
+<p><img alt="GIGABYTEX299AORUSMASTER(rev.1.0)" src="../imgs/image(9).png" /></p>
+<p><img alt="GIGABYTEX299AORUSMASTERmanual" src="../imgs/image(12).png" /></p>
+<h3 id="_4">带有桥接芯片的主板</h3>
+<p>有的主板如 <a href="https://www.asus.com.cn/Motherboards/WS-X299-SAGE/overview/">WS X299 SAGE</a> 带有 PLX 桥接芯片，可以在 CPU 没有足够 PCI-E 的情况下达到四卡 x16 的速度：</p>
+<p><img alt="WSX299SAGE" src="../imgs/image(34).png" /></p>
+<p><img alt="WSX299SAGEUserGuide" src="../imgs/image(57).png" /></p>
+<p>在多卡并行训练的时候，PCI-E 的传输速度决定了梯度同步的速度，如果你训练的的模型比较大，希望搭建多卡机器，建议选择支持四路 PCI-E x16 的主板。</p>
+<h2 id="_5">显卡</h2>
+<h3 id="_6">显卡性能表</h3>
+<table>
+<thead>
+<tr>
+<th align="left">型号</th>
+<th align="left">架构</th>
+<th align="left">价格(元)</th>
+<th align="left">显存(GB)</th>
+<th align="left">CUDA核</th>
+<th align="left">Tensor核</th>
+<th align="left">FP32(TFLOPS)</th>
+<th align="left">FP16</th>
+<th align="left">INT8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">GTX 1080Ti</td>
+<td align="left">Pascal</td>
+<td align="left">5299</td>
+<td align="left">11</td>
+<td align="left">3584</td>
+<td align="left">NA</td>
+<td align="left">11.3</td>
+<td align="left">NA</td>
+<td align="left">NA</td>
+</tr>
+<tr>
+<td align="left">RTX 2080</td>
+<td align="left">Turing</td>
+<td align="left"><a href="https://item.jd.com/8945581.html">5499</a></td>
+<td align="left">8</td>
+<td align="left">2944</td>
+<td align="left">368</td>
+<td align="left">10</td>
+<td align="left">40.3</td>
+<td align="left">161.1</td>
+</tr>
+<tr>
+<td align="left">RTX 2080Ti</td>
+<td align="left">Turing</td>
+<td align="left"><a href="https://item.jd.com/100002166999.html">8599</a></td>
+<td align="left">11</td>
+<td align="left">4532</td>
+<td align="left">544</td>
+<td align="left">13.4</td>
+<td align="left">53.8</td>
+<td align="left">215.2</td>
+</tr>
+<tr>
+<td align="left">TITAN RTX</td>
+<td align="left">Turing</td>
+<td align="left"><a href="https://item.jd.com/100001808707.html">16499</a></td>
+<td align="left">24</td>
+<td align="left">4608</td>
+<td align="left">576</td>
+<td align="left">16.3</td>
+<td align="left">130</td>
+<td align="left">260</td>
+</tr>
+<tr>
+<td align="left">Tesla V100</td>
+<td align="left">Volta</td>
+<td align="left"><a href="https://detail.tmall.com/item.htm?id=561577884286&amp;skuId=3749195716874">79600</a></td>
+<td align="left">32</td>
+<td align="left">5120</td>
+<td align="left">640</td>
+<td align="left">15.7</td>
+<td align="left">125</td>
+<td align="left">NA</td>
+</tr>
+</tbody>
+</table>
+<p>训练需要 FP32 和 FP16 的性能，推断需要 INT8 的性能。训练大模型需要注意显存大小。</p>
+<p>考虑成本可以买 RTX 2080Ti，想要高性能并且高性价比可以买 TITAN RTX，土豪可以选 Tesla V100。</p>
+<p>RTX 2080 显存较小，不推荐。GTX 1080Ti 已经出了太久了，网上都是二手卡，不推荐。</p>
+<p>参考链接：</p>
+<ul>
+<li><a href="https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/technologies/turing-architecture/NVIDIA-Turing-Architecture-Whitepaper.pdf">Turing 架构白皮书</a></li>
+<li><a href="https://images.nvidia.com/content/volta-architecture/pdf/volta-architecture-whitepaper.pdf">Volta 架构白皮书</a></li>
+<li><a href="https://lambdalabs.com/blog/2080-ti-deep-learning-benchmarks/">RTX 2080 Ti Deep Learning Benchmarks with TensorFlow - 2019</a></li>
+</ul>
+<h3 id="_7">涡轮与风扇</h3>
+<p>采购显卡的时候，一定要注意买涡轮版的，不要买两个或者三个风扇的版本，除非你只打算买一张卡。</p>
+<p>因为涡轮风扇的热是往外机箱外部吹的，所以可以很好地带走热量，散热比较好。如果买三个风扇的版本，插多卡的时候，上面的卡会把热量吹向第二张卡，导致第二张卡温度过高，影响性能。</p>
+<p>风扇显卡很有可能是超过双槽宽的，第二张卡可能插不上第二个 PCI-E 插槽，这个也需要注意。</p>
+<p><img alt="涡轮散热" src="../imgs/image(20).png" /></p>
+<p><img alt="风扇散热" src="../imgs/image(38).png" /></p>
+<h3 id="_8">服务器推断卡</h3>
+<p>除了用于训练，还有一类卡是用于推断的（只预测，不训练），如：</p>
+<table>
+<thead>
+<tr>
+<th align="left">型号</th>
+<th align="left">架构</th>
+<th align="left">价格(元)</th>
+<th align="left">显存(GB)</th>
+<th align="left">CUDA核</th>
+<th align="left">Tensor核</th>
+<th align="left">FP32(TFLOPS)</th>
+<th align="left">FP16</th>
+<th align="left">INT8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">Tesla P4</td>
+<td align="left">Pascal</td>
+<td align="left"><a href="https://detail.tmall.com/item.htm?id=551740053195">14500</a></td>
+<td align="left">8</td>
+<td align="left">2560</td>
+<td align="left">NA</td>
+<td align="left">5.5</td>
+<td align="left">NA</td>
+<td align="left">22</td>
+</tr>
+<tr>
+<td align="left">Tesla P40</td>
+<td align="left">Pascal</td>
+<td align="left"><a href="https://item.jd.com/6426833.html">43999</a></td>
+<td align="left">24</td>
+<td align="left">3584</td>
+<td align="left">NA</td>
+<td align="left">12</td>
+<td align="left">NA</td>
+<td align="left">47</td>
+</tr>
+<tr>
+<td align="left">Tesla P100</td>
+<td align="left">Pascal</td>
+<td align="left"><a href="https://item.jd.com/6362210.html">48900</a></td>
+<td align="left">16</td>
+<td align="left">3584</td>
+<td align="left">NA</td>
+<td align="left">10.6</td>
+<td align="left">21.2</td>
+<td align="left">NA</td>
+</tr>
+<tr>
+<td align="left">Tesla V100</td>
+<td align="left">Volta</td>
+<td align="left"><a href="https://detail.tmall.com/item.htm?id=561577884286&amp;skuId=3749195716874">79600</a></td>
+<td align="left">32</td>
+<td align="left">5120</td>
+<td align="left">640</td>
+<td align="left">15.7</td>
+<td align="left">125</td>
+<td align="left">NA</td>
+</tr>
+<tr>
+<td align="left">Tesla T4</td>
+<td align="left">Turing</td>
+<td align="left"><a href="https://item.jd.com/100001630485.html">19500</a></td>
+<td align="left">16</td>
+<td align="left">2560</td>
+<td align="left">320</td>
+<td align="left">8.1</td>
+<td align="left">65</td>
+<td align="left">130</td>
+</tr>
+</tbody>
+</table>
+<p>这些卡全部都是不带风扇的，但它们也需要散热，需要借助服务器强大的风扇被动散热，所以只能在专门设计的服务器上运行，具体请参考<a href="https://www.nvidia.cn/object/where-to-buy-tesla-catalog-cn.html">英伟达官网的说明</a>。</p>
+<p>性价比之选应该是 Tesla T4，但是发挥全部性能需要使用 TensorRT 深度优化，目前仍然存在许多坑，比如当你的网络使用了不支持的运算符时，需要自己实现。</p>
+<p>英伟达只允许这类卡在服务器上运行，像 GTX 1080Ti、RTX 2080Ti 都是不能在数据中心使用的。</p>
+<blockquote>
+<p>No Datacenter Deployment. The SOFTWARE is not licensed for datacenter deployment, except that blockchain processing in a datacenter is permitted.</p>
+</blockquote>
+<p>参考链接：</p>
+<ul>
+<li><a href="https://developer.nvidia.com/deep-learning-performance-training-inference">https://developer.nvidia.com/deep-learning-performance-training-inference</a></li>
+<li><a href="https://www.nvidia.cn/object/where-to-buy-tesla-catalog-cn.html">https://www.nvidia.cn/object/where-to-buy-tesla-catalog-cn.html</a></li>
+<li><a href="https://www.supermicro.org.cn/support/resources/gpu/">https://www.supermicro.org.cn/support/resources/gpu/</a></li>
+<li><a href="https://www.geforce.com/drivers/license/geforce">https://www.geforce.com/drivers/license/geforce</a></li>
+</ul>
+<h2 id="_9">硬盘</h2>
+<h3 id="_10">硬盘类型</h3>
+<p>常用硬盘接口有三种：</p>
+<ul>
+<li>SATA3.0，速度 600MB/s</li>
+<li>SAS，速度 1200MB/s</li>
+<li>PCIE 3.0 x4（NVMe)，速度 3.94GB/s</li>
+</ul>
+<h3 id="_11">参数对比</h3>
+<p>下面是根据代表产品查询的参数：</p>
+<table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">价格(元/TB)</th>
+<th align="left">读取速度(MB/s)</th>
+<th align="left">写入速度</th>
+<th align="left">4K随机读取(IOPS)</th>
+<th align="left">4K随机写入(IOPS)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">SATA3 机械硬盘</td>
+<td align="left">200</td>
+<td align="left">100</td>
+<td align="left">100</td>
+<td align="left">100</td>
+<td align="left">100</td>
+</tr>
+<tr>
+<td align="left">SATA3 固态硬盘</td>
+<td align="left">800</td>
+<td align="left">550</td>
+<td align="left">520</td>
+<td align="left">98000</td>
+<td align="left">90000</td>
+</tr>
+<tr>
+<td align="left">NVMe 固态硬盘</td>
+<td align="left">1000</td>
+<td align="left">3230</td>
+<td align="left">1625</td>
+<td align="left">340000</td>
+<td align="left">275000</td>
+</tr>
+</tbody>
+</table>
+<p>注：</p>
+<ul>
+<li>4K 随机读写的队列深度为 32</li>
+<li>SATA3 机械硬盘没有太好的数据来源，所以数据是经验值</li>
+<li>SATA3 固态硬盘数据来源：<a href="https://item.jd.com/6301071.html">三星（SAMSUNG）1TB SSD固态硬盘 SATA3.0接口 860 EVO</a></li>
+<li>NVMe 固态硬盘数据来源：<a href="https://item.jd.com/7591647.html">英特尔（Intel）1TB SSD固态硬盘 M.2接口(NVMe协议) 760P系</a></li>
+</ul>
+<p>在面对大量小文件的时候，使用 NVMe 硬盘可以一分钟扫完 1000万文件，如果使用普通硬盘，那么就需要一天时间。为了节省生命，简化代码，硬盘建议选择 NVMe 协议的固态硬盘。</p>
+<p>如果你的主板不够新，没有NVMe 插槽，你可以使用 M.2 转接卡将 M.2 接口转为 PCI-E 接口。</p>
+<p><img alt="M.2转接卡" src="../imgs/image(23).png" /></p>
+<h2 id="_12">内存</h2>
+<p>内存容量的选择通常大于显存，比如单卡配 16GB 内存，四卡配 64GB 内存。由于有数据生成器（DataLoader），数据不必全部加载到内存里，通常不会成为瓶颈。</p>
+<h2 id="_13">电源</h2>
+<p>先计算功率总和，如单卡 CPU 100W，显卡 250W，加上其他的大概 400W，那么就买 650W 的电源。</p>
+<p>双卡最好买 1000W 以上的电源，四卡最好买 1600W 的电源，我这里实测过四卡机用 1500W 的电源来带，跑起来所有的卡以后会因为电源不足而自动关机。</p>
+<p>一般墙上的插座只支持 220V 10A，也就是 2200W 的交流电，由于电源要把交流电转直流电，所以会有一些损耗，最高只有 1600W，因此如果想要支持八卡，最好不要在家尝试。八卡一般是双电源，并且需要使用专用的 PDU 插座，并且使用的是 16A 插口，如果在家使用，会插不上墙上的插座。</p>
+<h2 id="_14">网卡</h2>
+<p>一般主板自带千兆网卡。如果需要组建多机多卡集群，请联系供应商咨询专业的解决方案。</p>
+<h2 id="_15">机箱</h2>
+<p>如果配单卡，可以直接买个普通机箱，注意显卡长度能放下就行。</p>
+<p>如果配四卡机器，建议买一个 <a href="https://item.jd.com/1024817.html">Air 540</a> 机箱，因为我正在用这一款。</p>
+<p><img alt="Air540" src="../imgs/image(36).png" /></p>
+<h2 id="_16">显示器</h2>
+<p>深度学习工作站装好系统以后就不需要显示器了，装系统的时候使用手边的显示器就行。</p>
+<h2 id="_17">键盘鼠标</h2>
+<p>深度学习工作站装好系统以后就不需要键盘鼠标了，装系统的时候使用手边的键盘鼠标就行。</p>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="../how-to-use-tensorboard/" title="如何使用 TensorBoard" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  上一页
+                </span>
+                如何使用 TensorBoard
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="../windows-linux-or-macos/" title="Windows、Ubuntu 还是 macOS？" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  下一页
+                </span>
+                Windows、Ubuntu 还是 macOS？
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            杨培文
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+  <div class="md-footer-social">
+    <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
+    
+      <a href="https://github.com/ypwhs" class="md-footer-social__link fa fa-github"></a>
+    
+      <a href="https://www.zhihu.com/people/yangpw" class="md-footer-social__link fa fa-book"></a>
+    
+      <a href="https://ypw.io" class="md-footer-social__link fa fa-globe"></a>
+    
+      <a href="https://www.linkedin.com/in/ypwhs/" class="md-footer-social__link fa fa-linkedin"></a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.245445c6.js"></script>
+      
+        
+        
+          
+          <script src="../assets/javascripts/lunr/lunr.stemmer.support.js"></script>
+          
+            
+              
+                <script src="../assets/javascripts/lunr/tinyseg.js"></script>
+              
+              
+                <script src="../assets/javascripts/lunr/lunr.ja.js"></script>
+              
+            
+          
+          
+        
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+    
+  </body>
+</html>

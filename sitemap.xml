@@ -101,6 +101,11 @@
      <changefreq>daily</changefreq>
     </url>
     <url>
+     <loc>https://dl.ypw.io/linux-command/</loc>
+     <lastmod>2019-08-04</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    <url>
      <loc>https://dl.ypw.io/ubuntu-install-guide/</loc>
      <lastmod>2019-08-04</lastmod>
      <changefreq>daily</changefreq>

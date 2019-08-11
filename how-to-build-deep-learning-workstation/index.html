@@ -10,7 +10,7 @@
       <meta name="viewport" content="width=device-width,initial-scale=1">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
       
-        <meta name="description" content="这篇文章主要介绍的是家用的深度学习工作站，典型的配置有两种，分别是一个 GPU 的机器和 四个 GPU的机器。如果需要更多的 GPU 可以考虑配置两台四个 GPU 的机器。如果希望一台机器同时具备 6~8 个 GPU 需要联系专门的供应商进行配置，并且有专业的机房存放，放在家里噪声很大并且容易跳闸。">
+        <meta name="description" content="深度学习工程师生存指南">
       
       
         <link rel="canonical" href="https://dl.ypw.io/how-to-build-deep-learning-workstation/">
@@ -225,8 +225,6 @@
     
   </li>
 
-      
-        
       
         
       
@@ -727,30 +725,18 @@
       
       
 
-
-  <li class="md-nav__item">
-    <a href="../offline-python-environment/" title="离线安装 Python 环境" class="md-nav__link">
-      离线安装 Python 环境
-    </a>
-  </li>
-
-    
-      
-      
-      
-
   
 
 
   <li class="md-nav__item md-nav__item--active md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-16" type="checkbox" id="nav-16" checked>
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-15" type="checkbox" id="nav-15" checked>
     
-    <label class="md-nav__link" for="nav-16">
+    <label class="md-nav__link" for="nav-15">
       硬件
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-16">
+      <label class="md-nav__title" for="nav-15">
         硬件
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -987,13 +973,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-17" type="checkbox" id="nav-17">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-16" type="checkbox" id="nav-16">
     
-    <label class="md-nav__link" for="nav-17">
+    <label class="md-nav__link" for="nav-16">
       Mac
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-17">
+      <label class="md-nav__title" for="nav-16">
         Mac
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1071,13 +1057,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-18" type="checkbox" id="nav-18">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-17" type="checkbox" id="nav-17">
     
-    <label class="md-nav__link" for="nav-18">
+    <label class="md-nav__link" for="nav-17">
       Linux
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-18">
+      <label class="md-nav__title" for="nav-17">
         Linux
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1143,13 +1129,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-19" type="checkbox" id="nav-19">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-18" type="checkbox" id="nav-18">
     
-    <label class="md-nav__link" for="nav-19">
+    <label class="md-nav__link" for="nav-18">
       CV
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-19">
+      <label class="md-nav__title" for="nav-18">
         CV
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1203,13 +1189,13 @@
 
   <li class="md-nav__item md-nav__item--nested">
     
-      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-20" type="checkbox" id="nav-20">
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-19" type="checkbox" id="nav-19">
     
-    <label class="md-nav__link" for="nav-20">
+    <label class="md-nav__link" for="nav-19">
       使用技巧
     </label>
     <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
-      <label class="md-nav__title" for="nav-20">
+      <label class="md-nav__title" for="nav-19">
         使用技巧
       </label>
       <ul class="md-nav__list" data-md-scrollfix>
@@ -1257,8 +1243,8 @@
 
 
   <li class="md-nav__item">
-    <a href="../offline-python-environment/" title="离线安装 Python 环境" class="md-nav__link">
-      离线安装 Python 环境
+    <a href="../offline-python-environment/" title="离线 Python 环境" class="md-nav__link">
+      离线 Python 环境
     </a>
   </li>
 
@@ -1472,6 +1458,7 @@
                 
                 
                 <h1 id="_1">如何配置一台深度学习工作站?</h1>
+<p>这篇文章主要介绍的是家用的深度学习工作站，典型的配置有两种，分别是一个 GPU 的机器和 四个 GPU的机器。如果需要更多的 GPU 可以考虑配置两台四个 GPU 的机器。如果希望一台机器同时具备 6~8 个 GPU 需要联系<a href="https://www.supermicro.com/en/products/system/4U/4029/SYS-4029GP-TRT.cfm">专门的供应商</a>进行配置，并且需要专业的机房存放这些服务器，放在家里噪声很大并且容易跳闸。</p>
 <h2 id="cpu">CPU</h2>
 <p>由于最近 AMD 和 Intel 频繁更新 CPU，因此大家选择新款的 CPU 比较好。</p>
 <h3 id="cpu-gpu">CPU 与 GPU 的关系</h3>
@@ -1769,7 +1756,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href="../offline-python-environment/" title="离线安装 Python 环境" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../how-to-use-tensorboard/" title="如何使用 TensorBoard" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -1778,7 +1765,7 @@
                 <span class="md-footer-nav__direction">
                   上一页
                 </span>
-                离线安装 Python 环境
+                如何使用 TensorBoard
               </span>
             </div>
           </a>

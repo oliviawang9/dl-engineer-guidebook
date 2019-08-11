@@ -945,6 +945,8 @@ wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-L
 </pre></div>
 
 
+<script id="asciicast-sI5AYLfu71HaWTJiOLQrcauXJ" src="https://asciinema.org/a/sI5AYLfu71HaWTJiOLQrcauXJ.js" async></script>
+
 <h1 id="pkg-whl">下载 pkg 文件和 whl 文件</h1>
 <p><code class="codehilite"><span class="n">pip</span> <span class="n">download</span></code> 可以下载你所需要和依赖的 Python 库对应的 whl 安装包，但是你必须确保系统内核和 Python 版本一致。如果你使用的是 Mac，而目标机器是 Linux，那么你就不能够使用 <code class="codehilite"><span class="n">pip</span> <span class="n">download</span></code> 命令很方便地下载所有依赖的 whl 文件。为了简化这一问题，我们可以使用 Docker 创建一个 Linux 环境来完成下载任务。</p>
 <h2 id="miniconda">启动 miniconda 容器</h2>
@@ -977,6 +979,7 @@ cp *.tar.bz2 /data/pkgs
 </pre></div>
 
 
+<p><a href="https://asciinema.org/a/3bdwK66YrFRVu5AJa5GemXK3Z" target="_blank"><img src="https://asciinema.org/a/3bdwK66YrFRVu5AJa5GemXK3Z.svg" /></a></p>
 <h2 id="pip">配置 pip 源（可选）</h2>
 <p>通过添加<a href="https://mirrors.tuna.tsinghua.edu.cn/help/pypi/">清华大学开源软件镜像站的 Pypi 镜像</a>，我们可以加速下载过程。</p>
 <div class="codehilite"><pre><span></span>pip config <span class="nb">set</span> global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
@@ -991,6 +994,7 @@ pip download jupyter jupyter_contrib_nbextensions numpy pandas scikit-learn matp
 </pre></div>
 
 
+<p><a href="https://asciinema.org/a/ZjK3RkkKLrTt10mMIrWMaPiLE" target="_blank"><img src="https://asciinema.org/a/ZjK3RkkKLrTt10mMIrWMaPiLE.svg" /></a></p>
 <h1 id="_1">在离线机器上进行离线安装</h1>
 <h2 id="_2">将离线包传到离线机器上</h2>
 <p>下载好所有需要的离线安装包以后，我们就需要将它们传到离线服务器上，然后逐个安装。如果你的机器不支持<a href="../linux-command/#rsync">rsync</a> 命令，可以使用 <a href="../linux-command/#scp">scp</a> 命令。</p>

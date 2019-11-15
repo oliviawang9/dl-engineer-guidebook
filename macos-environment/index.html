@@ -1411,6 +1411,7 @@
 <p>使用下面的命令可以加速 <code class="codehilite"><span class="n">brew</span> <span class="k">update</span></code> ：</p>
 <div class="codehilite"><pre><span></span>git -C <span class="s2">&quot;</span><span class="k">$(</span>brew --repo<span class="k">)</span><span class="s2">&quot;</span> remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
 git -C <span class="s2">&quot;</span><span class="k">$(</span>brew --repo homebrew/core<span class="k">)</span><span class="s2">&quot;</span> remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
+git -C <span class="s2">&quot;</span><span class="k">$(</span>brew --repo homebrew/cask<span class="k">)</span><span class="s2">&quot;</span> remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask.git
 brew update
 </pre></div>
 

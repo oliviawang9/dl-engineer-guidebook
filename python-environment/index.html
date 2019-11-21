@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
       
       <link rel="shortcut icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.4.3">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.5.0">
     
     
       
@@ -46,7 +46,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/application.30686662.css">
+      <link rel="stylesheet" href="../assets/stylesheets/application.1b62728e.css">
       
         <link rel="stylesheet" href="../assets/stylesheets/application-palette.a8b3c06d.css">
       
@@ -57,7 +57,7 @@
       
     
     
-      <script src="../assets/javascripts/modernizr.74668098.js"></script>
+      <script src="../assets/javascripts/modernizr.268332fc.js"></script>
     
     
       
@@ -1808,15 +1808,15 @@ bash Anaconda3-2019.03-MacOSX-x86_64.sh
 
 
 <h3 id="_2">配置环境变量</h3>
-<p>安装好以后，有可能需要手动<a href="../linux-command/#export">配置环境变量</a>，比如我安装在 <code class="codehilite"><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">anaconda3</span></code> 目录下，所以我在 <code class="codehilite"><span class="o">~/</span><span class="p">.</span><span class="n">zshrc</span></code> 里添加里下面这句：</p>
-<div class="codehilite"><pre><span></span><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;/usr/local/anaconda3/bin:</span><span class="nv">$PATH</span><span class="s2">&quot;</span>
+<p>安装好以后，有可能需要手动<a href="../linux-command/#export">配置环境变量</a>，如果你使用的是 zsh，你需要为 zsh 初始化：</p>
+<div class="codehilite"><pre><span></span>anaconda3/bin/conda init zsh
 </pre></div>
 
 
-<p>在 Ubuntu 下，如果你使用的是 zsh，你需要在 <code class="codehilite"><span class="o">~/</span><span class="p">.</span><span class="n">zshrc</span></code> 里添加下面的内容，注意 <code class="codehilite"><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ypw</span><span class="o">/</span><span class="n">anaconda3</span></code> 路径需要按照实际情况修改：</p>
+<p>执行以后，在 <code class="codehilite"><span class="o">~/</span><span class="p">.</span><span class="n">zshrc</span></code> 中可以看到下面的内容：</p>
 <div class="codehilite"><pre><span></span><span class="c1"># &gt;&gt;&gt; conda initialize &gt;&gt;&gt;</span>
 <span class="c1"># !! Contents within this block are managed by &#39;conda init&#39; !!</span>
-<span class="nv">__conda_setup</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="s1">&#39;/home/ypw/anaconda3/bin/conda&#39;</span> <span class="s1">&#39;shell.bash&#39;</span> <span class="s1">&#39;hook&#39;</span> <span class="m">2</span>&gt; /dev/null<span class="k">)</span><span class="s2">&quot;</span>
+<span class="nv">__conda_setup</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="s1">&#39;/home/ypw/anaconda3/bin/conda&#39;</span> <span class="s1">&#39;shell.zsh&#39;</span> <span class="s1">&#39;hook&#39;</span> <span class="m">2</span>&gt; /dev/null<span class="k">)</span><span class="s2">&quot;</span>
 <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> -eq <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
     <span class="nb">eval</span> <span class="s2">&quot;</span><span class="nv">$__conda_setup</span><span class="s2">&quot;</span>
 <span class="k">else</span>
@@ -1851,9 +1851,23 @@ bash Anaconda3-2019.03-MacOSX-x86_64.sh
 <p>参考链接：<a href="https://ipython.readthedocs.io/en/stable/install/kernel_install.html">https://ipython.readthedocs.io/en/stable/install/kernel_install.html</a></p>
 <h3 id="anaconda_2">切换 anaconda 源</h3>
 <p>如果遇到网络问题，可以使用<a href="https://mirror.tuna.tsinghua.edu.cn/help/anaconda/">清华大学的镜像</a>：</p>
-<div class="codehilite"><pre><span></span>conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
-conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main/
-conda config --set show_channel_urls yes
+<div class="codehilite"><pre><span></span>nano ~/.condarc
+
+<span class="c1"># 添加下面的内容</span>
+channels:
+  - defaults
+show_channel_urls: <span class="nb">true</span>
+default_channels:
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r
+custom_channels:
+  conda-forge: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  msys2: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  bioconda: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  menpo: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  pytorch: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
+  simpleitk: https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud
 </pre></div>
 
 
@@ -2076,7 +2090,7 @@ conda config --set show_channel_urls yes
       
     </div>
     
-      <script src="../assets/javascripts/application.ac79c3b0.js"></script>
+      <script src="../assets/javascripts/application.a8b5e56f.js"></script>
       
         
         

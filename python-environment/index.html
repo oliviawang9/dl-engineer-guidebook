@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
       
       <link rel="shortcut icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.5.0">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
     
     
       
@@ -62,7 +62,7 @@
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
@@ -1809,11 +1809,11 @@ bash Anaconda3-2019.03-MacOSX-x86_64.sh
 
 <h3 id="_2">配置环境变量</h3>
 <p>安装好以后，有可能需要手动<a href="../linux-command/#export">配置环境变量</a>，如果你使用的是 zsh，你需要为 zsh 初始化：</p>
-<div class="codehilite"><pre><span></span>anaconda3/bin/conda init zsh
+<div class="codehilite"><pre><span></span>/usr/local/anaconda3/bin/conda init zsh
 </pre></div>
 
 
-<p>执行以后，在 <code class="codehilite"><span class="o">~/</span><span class="p">.</span><span class="n">zshrc</span></code> 中可以看到下面的内容：</p>
+<p>执行以后，在 <code class="codehilite"><span class="err">~/.zshrc</span></code> 中可以看到下面的内容：</p>
 <div class="codehilite"><pre><span></span><span class="c1"># &gt;&gt;&gt; conda initialize &gt;&gt;&gt;</span>
 <span class="c1"># !! Contents within this block are managed by &#39;conda init&#39; !!</span>
 <span class="nv">__conda_setup</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="s1">&#39;/home/ypw/anaconda3/bin/conda&#39;</span> <span class="s1">&#39;shell.zsh&#39;</span> <span class="s1">&#39;hook&#39;</span> <span class="m">2</span>&gt; /dev/null<span class="k">)</span><span class="s2">&quot;</span>
@@ -1881,7 +1881,7 @@ custom_channels:
 <p>下面是我认为比较重要的 Python 库：</p>
 <ul>
 <li>jupyter</li>
-<li><code class="codehilite"><span class="n">jupyter_contrib_nbextensions</span></code></li>
+<li><code class="codehilite"><span class="err">jupyter_contrib_nbextensions</span></code></li>
 <li>numpy</li>
 <li>pandas</li>
 <li>scikit-learn</li>
@@ -1917,7 +1917,7 @@ custom_channels:
 <h3 id="jupyter95contrib95nbextensions"><a href="https://github.com/ipython-contrib/jupyter_contrib_nbextensions">jupyter_contrib_nbextensions</a></h3>
 <p>Jupyter Notebook 插件。</p>
 <blockquote>
-<p>该<code class="codehilite"><span class="n">jupyter_contrib_nbextensions</span></code>软件包包含一系列社区贡献的非官方扩展，可为Jupyter笔记本添加功能。这些扩展大多是用Javascript编写的，将在您的浏览器中本地加载。</p>
+<p>该<code class="codehilite"><span class="err">jupyter_contrib_nbextensions</span></code>软件包包含一系列社区贡献的非官方扩展，可为Jupyter笔记本添加功能。这些扩展大多是用Javascript编写的，将在您的浏览器中本地加载。</p>
 </blockquote>
 <p>我使用了<a href="https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/nbextensions/execute_time/readme.html">代码执行时间插件</a>和<a href="https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/nbextensions/codefolding/readme.html">函数折叠插件</a>。</p>
 <h3 id="numpy"><a href="https://numpy.org/">numpy</a></h3>
@@ -1967,8 +1967,8 @@ custom_channels:
 <h3 id="tqdm"><a href="https://github.com/tqdm/tqdm">tqdm</a></h3>
 <p>进度条库，耗时长的任务可以使用 tqdm 直观地展示任务的进度，避免焦虑。</p>
 <blockquote>
-<p><code class="codehilite"><span class="n">tqdm</span></code>在阿拉伯语中是“进步”（<em>taqadum</em>，تقدم）的意思，在西班牙语中是“我太爱你了”（<em>te quiero demasiado</em>）的缩写。</p>
-<p>只需在任何迭代器外包一个 tqdm：<code class="codehilite"><span class="n">tqdm</span><span class="p">(</span><span class="n">iterable</span><span class="p">)</span></code>，就能立刻让你的循环显示一个聪明的进度条！</p>
+<p><code class="codehilite"><span class="err">tqdm</span></code>在阿拉伯语中是“进步”（<em>taqadum</em>，تقدم）的意思，在西班牙语中是“我太爱你了”（<em>te quiero demasiado</em>）的缩写。</p>
+<p>只需在任何迭代器外包一个 tqdm：<code class="codehilite"><span class="err">tqdm(iterable)</span></code>，就能立刻让你的循环显示一个聪明的进度条！</p>
 </blockquote>
 <p><img alt="tqdm" src="https://raw.githubusercontent.com/tqdm/tqdm/master/images/tqdm.gif" /></p>
 <h3 id="torch"><a href="https://pytorch.org/">torch</a></h3>
@@ -1979,7 +1979,7 @@ custom_channels:
 <h3 id="torchvision"><a href="https://pytorch.org/docs/stable/torchvision/index.html">torchvision</a></h3>
 <p>和 PyTorch 配套使用。</p>
 <blockquote>
-<p><a href="https://pytorch.org/docs/stable/torchvision/index.html#module-torchvision"><code class="codehilite"><span class="n">torchvision</span></code></a>包含了流行的数据集，预训练模型和计算机视觉的常见的图像变换。</p>
+<p><a href="https://pytorch.org/docs/stable/torchvision/index.html#module-torchvision"><code class="codehilite"><span class="err">torchvision</span></code></a>包含了流行的数据集，预训练模型和计算机视觉的常见的图像变换。</p>
 </blockquote>
 <h3 id="tensorflow"><a href="https://www.tensorflow.org/">tensorflow</a></h3>
 <p>深度学习库，大而全。配备显卡的机器请按照 <a href="../ubuntu-environment/">Ubuntu 环境</a> 进行配置。</p>
@@ -2006,6 +2006,7 @@ custom_channels:
 <p>目前 pytorch 1.1 也有<a href="https://pytorch.org/docs/stable/tensorboard.html">官方支持</a>，但是功能有限，所以目前我仍然在使用 tensorboardX。</p>
                 
                   
+                
                 
               
               
@@ -2090,7 +2091,7 @@ custom_channels:
       
     </div>
     
-      <script src="../assets/javascripts/application.a8b5e56f.js"></script>
+      <script src="../assets/javascripts/application.808e90bb.js"></script>
       
         
         

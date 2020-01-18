@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
       
       <link rel="shortcut icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.5.0">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
     
     
       
@@ -62,7 +62,7 @@
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
@@ -2853,27 +2853,27 @@
 <h3 id="man">man</h3>
 <p>Linux 下的帮助命令。</p>
 <p>授人以鱼不如授人以渔，首先应该教会大家查文档，而不是教会大家所有命令的用法。</p>
-<p>如：<code class="codehilite"><span class="n">man</span> <span class="n">ls</span></code>可以查看 ls 命令的帮助文档。</p>
+<p>如：<code class="codehilite"><span class="err">man ls</span></code>可以查看 ls 命令的帮助文档。</p>
 <p>提示：按 q 退出帮助页面。</p>
 <script id="asciicast-PFF2O1mkmPFMECrkunYHhjHvs" src="https://asciinema.org/a/PFF2O1mkmPFMECrkunYHhjHvs.js" async></script>
 
 <h2 id="_1">文件查看</h2>
 <h3 id="cd">cd</h3>
 <p>切换工作目录。</p>
-<p><code class="codehilite"><span class="o">~</span></code> 是 home directory 的意思，<code class="codehilite"><span class="p">.</span></code>表示目前所在的目录，<code class="codehilite"><span class="cp">..</span></code>表示目前目录位置的上一层目录。</p>
-<p><code class="codehilite"><span class="n">cd</span> <span class="p">..</span></code> 返回上一层目录。</p>
+<p><code class="codehilite"><span class="err">~</span></code> 是 home directory 的意思，<code class="codehilite"><span class="err">.</span></code>表示目前所在的目录，<code class="codehilite"><span class="cp">..</span></code>表示目前目录位置的上一层目录。</p>
+<p><code class="codehilite"><span class="err">cd ..</span></code> 返回上一层目录。</p>
 <h3 id="ls">ls</h3>
-<p><code class="codehilite"><span class="n">ls</span></code> 是 list 的缩写，用来显示目标列表。</p>
-<p><code class="codehilite"><span class="n">ll</span></code> 是<code class="codehilite"><span class="n">ls</span> <span class="o">-</span><span class="n">lh</span></code> 的别名，列出的信息更加详细。</p>
+<p><code class="codehilite"><span class="err">ls</span></code> 是 list 的缩写，用来显示目标列表。</p>
+<p><code class="codehilite"><span class="err">ll</span></code> 是<code class="codehilite"><span class="err">ls -lh</span></code> 的别名，列出的信息更加详细。</p>
 <h3 id="pwd">pwd</h3>
-<p><code class="codehilite"><span class="n">pwd</span></code> 命令以绝对路径的方式显示用户当前工作目录。</p>
+<p><code class="codehilite"><span class="err">pwd</span></code> 命令以绝对路径的方式显示用户当前工作目录。</p>
 <h3 id="cat">cat</h3>
-<p>显示文件的内容：<code class="codehilite"><span class="n">cat</span> <span class="n">file</span></code></p>
-<p>当文件较大时，文本会在屏幕上快速滚动，可以使用<code class="codehilite"><span class="n">Ctrl</span><span class="o">+</span><span class="n">S</span></code>停止滚动，<code class="codehilite"><span class="n">Ctrl</span><span class="o">+</span><span class="n">Q</span></code>恢复滚动，<code class="codehilite"><span class="n">Ctrl</span><span class="o">+</span><span class="k">C</span></code>退出当前命令。</p>
+<p>显示文件的内容：<code class="codehilite"><span class="err">cat file</span></code></p>
+<p>当文件较大时，文本会在屏幕上快速滚动，可以使用<code class="codehilite"><span class="err">Ctrl+S</span></code>停止滚动，<code class="codehilite"><span class="err">Ctrl+Q</span></code>恢复滚动，<code class="codehilite"><span class="err">Ctrl+C</span></code>退出当前命令。</p>
 <h3 id="head">head</h3>
-<p>显示文件开头的内容，比如：<code class="codehilite"><span class="n">head</span> <span class="o">-</span><span class="n">n</span> <span class="mi">5</span> <span class="n">train</span><span class="p">.</span><span class="n">csv</span></code> 可以显示训练集 csv 前五行内容。</p>
+<p>显示文件开头的内容，比如：<code class="codehilite"><span class="err">head -n 5 train.csv</span></code> 可以显示训练集 csv 前五行内容。</p>
 <h3 id="tail">tail</h3>
-<p>显示文件尾部的内容。<code class="codehilite"><span class="n">tail</span></code> 和 <code class="codehilite"><span class="n">head</span></code> 默认显示 10 行。</p>
+<p>显示文件尾部的内容。<code class="codehilite"><span class="err">tail</span></code> 和 <code class="codehilite"><span class="err">head</span></code> 默认显示 10 行。</p>
 <h3 id="find">find</h3>
 <p>在指定目录下查找文件。</p>
 <h3 id="grep">grep</h3>
@@ -2890,7 +2890,7 @@
 
 
 <h3 id="whereis">whereis</h3>
-<p>可以查找包含指定关键字的文件，如 <code class="codehilite"><span class="n">whereis</span> <span class="n">python</span></code> 可以查找所有的文件名包含 python 的文件路径：</p>
+<p>可以查找包含指定关键字的文件，如 <code class="codehilite"><span class="err">whereis python</span></code> 可以查找所有的文件名包含 python 的文件路径：</p>
 <div class="codehilite"><pre><span></span>➜  ~ whereis python
 python: /usr/bin/python2.7 /usr/bin/python3.5 /usr/bin/python /usr/bin/python3.5m /usr/lib/python2.7 /usr/lib/python3.5 /etc/python2.7 /etc/python3.5 /etc/python /usr/local/lib/python2.7 /usr/local/lib/python3.5 /usr/include/python3.5m /usr/share/python /home/ypw/anaconda3/bin/python3.6 /home/ypw/anaconda3/bin/python3.6m-config /home/ypw/anaconda3/bin/python3.6-config /home/ypw/anaconda3/bin/python3.6m /home/ypw/anaconda3/bin/python /usr/share/man/man1/python.1.gz
 </pre></div>
@@ -2898,7 +2898,7 @@ python: /usr/bin/python2.7 /usr/bin/python3.5 /usr/bin/python /usr/bin/python3.5
 
 <h3 id="which">which</h3>
 <p>可以查找当前使用的命令的绝对路径。</p>
-<p>如 <code class="codehilite"><span class="n">which</span> <span class="n">python</span></code> 可以显示 <code class="codehilite"><span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">ypw</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">bin</span><span class="o">/</span><span class="n">python</span></code>。</p>
+<p>如 <code class="codehilite"><span class="err">which python</span></code> 可以显示 <code class="codehilite"><span class="err">/home/ypw/anaconda3/bin/python</span></code>。</p>
 <p>但是当你激活一个新的环境以后，就会得到不一样的结果：</p>
 <div class="codehilite"><pre><span></span>➜  ~ <span class="nb">source</span> activate tensorflow
 <span class="o">(</span>tensorflow<span class="o">)</span> ➜  ~ which python
@@ -2914,14 +2914,14 @@ python: /usr/bin/python2.7 /usr/bin/python3.5 /usr/bin/python /usr/bin/python3.5
 <h3 id="touch">touch</h3>
 <p>创建空文件。</p>
 <h3 id="rm">rm</h3>
-<p>移除文件。移除文件夹时需要使用<code class="codehilite"><span class="n">rm</span> <span class="o">-</span><span class="n">r</span></code>，没有权限时需要<code class="codehilite"><span class="n">rm</span> <span class="o">-</span><span class="n">rf</span></code> 。</p>
-<p>此命令比较危险，注意不要写成这样：<code class="codehilite"><span class="n">rm</span> <span class="o">-</span><span class="n">rf</span> <span class="o">/</span> <span class="n">tmp</span></code>，这样会删除<code class="codehilite"><span class="o">/</span></code>下的所有文件，属于删库跑路行为。</p>
+<p>移除文件。移除文件夹时需要使用<code class="codehilite"><span class="err">rm -r</span></code>，没有权限时需要<code class="codehilite"><span class="err">rm -rf</span></code> 。</p>
+<p>此命令比较危险，注意不要写成这样：<code class="codehilite"><span class="err">rm -rf / tmp</span></code>，这样会删除<code class="codehilite"><span class="err">/</span></code>下的所有文件，属于删库跑路行为。</p>
 <h3 id="cp">cp</h3>
-<p>复制文件：<code class="codehilite"><span class="n">cp</span> <span class="n">src</span> <span class="n">dst</span></code></p>
-<p>复制文件夹：<code class="codehilite"><span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="n">src</span> <span class="n">dst</span></code></p>
+<p>复制文件：<code class="codehilite"><span class="err">cp src dst</span></code></p>
+<p>复制文件夹：<code class="codehilite"><span class="err">cp -r src dst</span></code></p>
 <h3 id="mv">mv</h3>
 <p>移动命令。</p>
-<p>例如：<code class="codehilite"><span class="n">mv</span> <span class="k">source</span> <span class="n">destination</span></code></p>
+<p>例如：<code class="codehilite"><span class="err">mv source destination</span></code></p>
 <script id="asciicast-hWFuRKiWoggP8xIH7ZKQGmABR" src="https://asciinema.org/a/hWFuRKiWoggP8xIH7ZKQGmABR.js" async></script>
 
 <h3 id="vim">vim</h3>
@@ -2933,16 +2933,16 @@ python: /usr/bin/python2.7 /usr/bin/python3.5 /usr/bin/python /usr/bin/python3.5
 </pre></div>
 
 
-<p>提示：<code class="codehilite"><span class="n">Ctrl</span><span class="o">+</span><span class="n">O</span></code> 可以保存文件，<code class="codehilite"><span class="n">Ctrl</span><span class="o">+</span><span class="n">K</span></code> 可以删除整行，<code class="codehilite"><span class="n">Ctrl</span><span class="o">+</span><span class="n">W</span></code> 可以查找文本，<code class="codehilite"><span class="n">Ctrl</span><span class="o">+</span><span class="n">X</span></code> 可以退出编辑器，其他特性可以根据底部的快捷键自行学习。</p>
+<p>提示：<code class="codehilite"><span class="err">Ctrl+O</span></code> 可以保存文件，<code class="codehilite"><span class="err">Ctrl+K</span></code> 可以删除整行，<code class="codehilite"><span class="err">Ctrl+W</span></code> 可以查找文本，<code class="codehilite"><span class="err">Ctrl+X</span></code> 可以退出编辑器，其他特性可以根据底部的快捷键自行学习。</p>
 <h2 id="_3">打包压缩</h2>
 <h3 id="zip">zip</h3>
-<p>压缩命令，通过<code class="codehilite"><span class="n">zip</span> <span class="n">file</span><span class="p">.</span><span class="n">zip</span> <span class="n">file</span></code>可以压缩一个文件，通过<code class="codehilite"><span class="n">zip</span> <span class="n">files</span><span class="p">.</span><span class="n">zip</span> <span class="o">-</span><span class="n">r</span> <span class="n">dir</span></code>可以压缩整个文件夹。</p>
+<p>压缩命令，通过<code class="codehilite"><span class="err">zip file.zip file</span></code>可以压缩一个文件，通过<code class="codehilite"><span class="err">zip files.zip -r dir</span></code>可以压缩整个文件夹。</p>
 <h3 id="unzip">unzip</h3>
-<p>解压由<code class="codehilite"><span class="n">zip</span></code> 命令压缩的 .zip 文件。</p>
-<p>例如：<code class="codehilite"><span class="n">unzip</span> <span class="n">files</span><span class="p">.</span><span class="n">zip</span></code></p>
+<p>解压由<code class="codehilite"><span class="err">zip</span></code> 命令压缩的 .zip 文件。</p>
+<p>例如：<code class="codehilite"><span class="err">unzip files.zip</span></code></p>
 <h3 id="tar">tar</h3>
-<p><code class="codehilite"><span class="o">*</span><span class="p">.</span><span class="n">tar</span></code> 打包文件：只是把很多小文件拼接在一起，速度快，不占用 CPU，比如 ImageNet 数据集就是一个打包文件，解包的速度非常快。打包后的文件大小和原始文件夹的大小基本一致。</p>
-<p><code class="codehilite"><span class="o">*</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span></code> 压缩文件：先打包成一个文件，然后再压缩一遍，就是这个格式。如果文件是未压缩的格式，比如文本文件，使用这个格式可以有很高的压缩比。注意：jpg 和 png 格式是压缩后的格式，只打包就行，如果对 ImageNet 数据集先打包再压缩，就会有很长的耗时，并且文件不会明显变小。</p>
+<p><code class="codehilite"><span class="err">*.tar</span></code> 打包文件：只是把很多小文件拼接在一起，速度快，不占用 CPU，比如 ImageNet 数据集就是一个打包文件，解包的速度非常快。打包后的文件大小和原始文件夹的大小基本一致。</p>
+<p><code class="codehilite"><span class="err">*.tar.gz</span></code> 压缩文件：先打包成一个文件，然后再压缩一遍，就是这个格式。如果文件是未压缩的格式，比如文本文件，使用这个格式可以有很高的压缩比。注意：jpg 和 png 格式是压缩后的格式，只打包就行，如果对 ImageNet 数据集先打包再压缩，就会有很长的耗时，并且文件不会明显变小。</p>
 <ul>
 <li>c：打包</li>
 <li>x：解包</li>
@@ -2950,37 +2950,37 @@ python: /usr/bin/python2.7 /usr/bin/python3.5 /usr/bin/python /usr/bin/python3.5
 <li>f：指定打包文件</li>
 <li>z：使用 gzip 压缩格式</li>
 </ul>
-<p>打包文件夹：<code class="codehilite"><span class="n">tar</span> <span class="o">-</span><span class="n">cvf</span> <span class="n">files</span><span class="p">.</span><span class="n">tar</span> <span class="n">dir</span></code> </p>
-<p>解包：<code class="codehilite"><span class="n">tar</span> <span class="o">-</span><span class="n">xvf</span> <span class="n">files</span><span class="p">.</span><span class="n">tar</span></code> </p>
-<p>压缩文件夹：<code class="codehilite"><span class="n">tar</span> <span class="o">-</span><span class="n">czvf</span> <span class="n">files</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span> <span class="n">dir</span></code> </p>
-<p>解压：<code class="codehilite"><span class="n">tar</span> <span class="o">-</span><span class="n">xzvf</span> <span class="n">files</span><span class="p">.</span><span class="n">tar</span><span class="p">.</span><span class="n">gz</span></code></p>
+<p>打包文件夹：<code class="codehilite"><span class="err">tar -cvf files.tar dir</span></code> </p>
+<p>解包：<code class="codehilite"><span class="err">tar -xvf files.tar</span></code> </p>
+<p>压缩文件夹：<code class="codehilite"><span class="err">tar -czvf files.tar.gz dir</span></code> </p>
+<p>解压：<code class="codehilite"><span class="err">tar -xzvf files.tar.gz</span></code></p>
 <h2 id="_4">权限管理</h2>
 <h3 id="sudo">sudo</h3>
-<p>以 root 权限执行命令，比如 <code class="codehilite"><span class="n">sudo</span> <span class="n">reboot</span></code> 可以重启机器，普通权限无法重启。</p>
+<p>以 root 权限执行命令，比如 <code class="codehilite"><span class="err">sudo reboot</span></code> 可以重启机器，普通权限无法重启。</p>
 <h3 id="su">su</h3>
-<p>切换用户，比如 <code class="codehilite"><span class="n">sudo</span> <span class="n">su</span> <span class="n">ypw</span></code> 可以将当前用户切换到 ypw 用户。</p>
+<p>切换用户，比如 <code class="codehilite"><span class="err">sudo su ypw</span></code> 可以将当前用户切换到 ypw 用户。</p>
 <h3 id="chmod">chmod</h3>
-<p>修改权限的命令，比如：<code class="codehilite"><span class="n">sudo</span> <span class="n">chmod</span> <span class="o">-</span><span class="n">R</span> <span class="mi">777</span> <span class="k">data</span></code> 可以把 data 文件夹修改为任何人可以读写。</p>
+<p>修改权限的命令，比如：<code class="codehilite"><span class="err">sudo chmod -R 777 data</span></code> 可以把 data 文件夹修改为任何人可以读写。</p>
 <h3 id="chown">chown</h3>
-<p>修改所有者的命令，比如：<code class="codehilite"><span class="n">sudo</span> <span class="n">chown</span> <span class="o">-</span><span class="n">R</span> <span class="n">ypw</span> <span class="k">data</span></code> 可以把 data 文件夹的所有权改为 ypw。</p>
+<p>修改所有者的命令，比如：<code class="codehilite"><span class="err">sudo chown -R ypw data</span></code> 可以把 data 文件夹的所有权改为 ypw。</p>
 <h3 id="passwd">passwd</h3>
-<p>修改密码命令，直接执行 <code class="codehilite"><span class="n">passwd</span></code> 可以修改当前用户密码。</p>
-<p>强制修改某个用户的密码：<code class="codehilite"><span class="n">sudo</span> <span class="n">passwd</span> <span class="n">ypw</span></code></p>
+<p>修改密码命令，直接执行 <code class="codehilite"><span class="err">passwd</span></code> 可以修改当前用户密码。</p>
+<p>强制修改某个用户的密码：<code class="codehilite"><span class="err">sudo passwd ypw</span></code></p>
 <h2 id="_5">进程管理</h2>
 <h3 id="ps">ps</h3>
-<p><code class="codehilite"><span class="n">ps</span> <span class="n">aux</span></code> 可以列出所有进程的详细信息。</p>
-<p>配合 grep 命令用比较好，比如 <code class="codehilite"><span class="n">ps</span> <span class="n">aux</span> <span class="o">|</span> <span class="n">grep</span> <span class="n">ipython</span> <span class="o">|</span> <span class="n">grep</span> <span class="o">-</span><span class="n">v</span> <span class="n">grep</span></code></p>
-<p>首先使用 <code class="codehilite"><span class="n">ps</span> <span class="n">aux</span></code> 获取所有的进程信息，然后用 <code class="codehilite"><span class="n">grep</span> <span class="n">ipython</span></code> 查找带有 python 的进程，最后使用 <code class="codehilite"><span class="n">grep</span> <span class="o">-</span><span class="n">v</span> <span class="n">grep</span></code> 过滤 grep 进程本身。</p>
+<p><code class="codehilite"><span class="err">ps aux</span></code> 可以列出所有进程的详细信息。</p>
+<p>配合 grep 命令用比较好，比如 <code class="codehilite"><span class="err">ps aux | grep ipython | grep -v grep</span></code></p>
+<p>首先使用 <code class="codehilite"><span class="err">ps aux</span></code> 获取所有的进程信息，然后用 <code class="codehilite"><span class="err">grep ipython</span></code> 查找带有 python 的进程，最后使用 <code class="codehilite"><span class="err">grep -v grep</span></code> 过滤 grep 进程本身。</p>
 <h3 id="kill">kill</h3>
-<p>杀掉执行中的进程，刚才 ps 命令可以得到进程号，你可以根据进程号删除该进程，如 <code class="codehilite"><span class="n">kill</span> <span class="mi">8339</span></code></p>
+<p>杀掉执行中的进程，刚才 ps 命令可以得到进程号，你可以根据进程号删除该进程，如 <code class="codehilite"><span class="err">kill 8339</span></code></p>
 <script id="asciicast-LI1QUFDERv148oZZ4qkDOhlIN" src="https://asciinema.org/a/LI1QUFDERv148oZZ4qkDOhlIN.js" async></script>
 
 <h3 id="killall">killall</h3>
 <p>通过进程名来杀掉进程，请确保你不会影响其他人的情况下使用该命令。</p>
-<p>如果同事正在使用 python 跑程序，你也在使用 python 跑程序，在你执行完 <code class="codehilite"><span class="n">killall</span> <span class="n">python</span></code> 以后，你们的 python 进程都会被杀掉。</p>
+<p>如果同事正在使用 python 跑程序，你也在使用 python 跑程序，在你执行完 <code class="codehilite"><span class="err">killall python</span></code> 以后，你们的 python 进程都会被杀掉。</p>
 <h2 id="_6">磁盘管理</h2>
 <h3 id="df">df</h3>
-<p>查看磁盘空间，比如 <code class="codehilite"><span class="n">df</span> <span class="o">-</span><span class="n">h</span></code> 可以显示下面的内容：</p>
+<p>查看磁盘空间，比如 <code class="codehilite"><span class="err">df -h</span></code> 可以显示下面的内容：</p>
 <div class="codehilite"><pre><span></span>Filesystem      Size  Used Avail Use% Mounted on
 udev             32G     0   32G   0% /dev
 tmpfs           6.3G  9.5M  6.3G   1% /run
@@ -2993,9 +2993,9 @@ tmpfs           6.3G   32K  6.3G   1% /run/user/1000
 </pre></div>
 
 
-<p>使用 <code class="codehilite"><span class="n">df</span> <span class="o">-</span><span class="n">ih</span></code> 可以查看 Inodes 使用情况，如果你的磁盘下存在很多小文件，那么你可以使用这个命令查看文件表是否用完了。</p>
+<p>使用 <code class="codehilite"><span class="err">df -ih</span></code> 可以查看 Inodes 使用情况，如果你的磁盘下存在很多小文件，那么你可以使用这个命令查看文件表是否用完了。</p>
 <h3 id="du">du</h3>
-<p>可以查看文件夹大小，比如：<code class="codehilite"><span class="n">du</span> <span class="o">-</span><span class="n">h</span> <span class="n">ImageNet</span></code> 可以输出下面的内容：</p>
+<p>可以查看文件夹大小，比如：<code class="codehilite"><span class="err">du -h ImageNet</span></code> 可以输出下面的内容：</p>
 <div class="codehilite"><pre><span></span>......
 163M    ImageNet/train/n12620546
 128M    ImageNet/train/n02108551
@@ -3017,29 +3017,29 @@ tmpfs           6.3G   32K  6.3G   1% /run/user/1000
 </pre></div>
 
 
-<p>注意：此处需要 <code class="codehilite"><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">cifs</span><span class="o">-</span><span class="n">utils</span></code> 。</p>
+<p>注意：此处需要 <code class="codehilite"><span class="err">sudo apt install cifs-utils</span></code> 。</p>
 <h2 id="_7">系统管理</h2>
 <h3 id="apt">apt</h3>
 <p>Ubuntu 系统的包管理器，用于安装和卸载软件包。</p>
-<p>安装：<code class="codehilite"><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">curl</span></code></p>
-<p>卸载：<code class="codehilite"><span class="n">sudo</span> <span class="n">apt</span> <span class="n">purge</span> <span class="n">curl</span></code></p>
+<p>安装：<code class="codehilite"><span class="err">sudo apt install curl</span></code></p>
+<p>卸载：<code class="codehilite"><span class="err">sudo apt purge curl</span></code></p>
 <h3 id="export">export</h3>
 <p>设置环境变量命令，一般写在 <code class="codehilite"><span class="na">.bashrc</span></code> 或 <code class="codehilite"><span class="na">.zshrc</span></code> 文件中，例如：</p>
 <div class="codehilite"><pre><span></span><span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/usr/local/cuda/bin:<span class="nv">$PATH</span>
 </pre></div>
 
 
-<p>的功能是把 <code class="codehilite"><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="n">bin</span></code> 目录添加到 <code class="codehilite"><span class="n">PATH</span></code> 的最前面，这样就可以直接在命令行使用 <code class="codehilite"><span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="k">local</span><span class="o">/</span><span class="n">cuda</span><span class="o">/</span><span class="n">bin</span></code> 目录下的 <code class="codehilite"><span class="n">nvcc</span></code> 命令。</p>
+<p>的功能是把 <code class="codehilite"><span class="err">/usr/local/cuda/bin</span></code> 目录添加到 <code class="codehilite"><span class="err">PATH</span></code> 的最前面，这样就可以直接在命令行使用 <code class="codehilite"><span class="err">/usr/local/cuda/bin</span></code> 目录下的 <code class="codehilite"><span class="err">nvcc</span></code> 命令。</p>
 <h3 id="source">source</h3>
 <p>更新环境变量。</p>
-<p>如 zsh 用户更新了 <code class="codehilite"><span class="o">~/</span><span class="p">.</span><span class="n">zshrc</span></code> 以后，可以使用下面的命令更新环境变量：</p>
+<p>如 zsh 用户更新了 <code class="codehilite"><span class="err">~/.zshrc</span></code> 以后，可以使用下面的命令更新环境变量：</p>
 <div class="codehilite"><pre><span></span><span class="nb">source</span> ~/.zshrc
 </pre></div>
 
 
 <h3 id="echo">echo</h3>
 <p>可以输出环境变量。</p>
-<p>例如：<code class="codehilite"><span class="n">echo</span> <span class="err">$</span><span class="n">PATH</span></code></p>
+<p>例如：<code class="codehilite"><span class="err">echo $PATH</span></code></p>
 <h3 id="service">service</h3>
 <p>开启关闭服务的命令，如：</p>
 <div class="codehilite"><pre><span></span>sudo service network-manager restart
@@ -3048,14 +3048,14 @@ tmpfs           6.3G   32K  6.3G   1% /run/user/1000
 
 <h3 id="shutdown">shutdown</h3>
 <p>关机命令。</p>
-<p>例如：<code class="codehilite"><span class="n">sudo</span> <span class="n">shutdown</span> <span class="o">-</span><span class="n">t</span> <span class="mi">0</span></code></p>
+<p>例如：<code class="codehilite"><span class="err">sudo shutdown -t 0</span></code></p>
 <h3 id="reboot">reboot</h3>
 <p>重启命令。</p>
-<p>例如：<code class="codehilite"><span class="n">sudo</span> <span class="n">reboot</span></code></p>
+<p>例如：<code class="codehilite"><span class="err">sudo reboot</span></code></p>
 <h2 id="_8">系统监测</h2>
 <h3 id="uname">uname</h3>
 <p>显示当前的系统信息。</p>
-<p><code class="codehilite"><span class="n">uname</span> <span class="o">-</span><span class="n">a</span></code> 显示全部的信息，如内核版本号、硬件架构、主机名称和操作系统类型等。</p>
+<p><code class="codehilite"><span class="err">uname -a</span></code> 显示全部的信息，如内核版本号、硬件架构、主机名称和操作系统类型等。</p>
 <h3 id="top">top</h3>
 <p>实时查看系统的运行状态，如 CPU、内存、进程的信息。</p>
 <h3 id="ifconfig">ifconfig</h3>
@@ -3068,7 +3068,7 @@ tmpfs           6.3G   32K  6.3G   1% /run/user/1000
 
 
 <h3 id="free">free</h3>
-<p>查看内存使用情况，如：<code class="codehilite"><span class="k">free</span> <span class="o">-</span><span class="n">h</span></code></p>
+<p>查看内存使用情况，如：<code class="codehilite"><span class="err">free -h</span></code></p>
 <div class="codehilite"><pre><span></span>              total        used        free      shared  buff/cache   available
 Mem:            62G        404M         61G        9.4M        891M         61G
 Swap:          976M          0B        976M
@@ -3078,16 +3078,16 @@ Swap:          976M          0B        976M
 <h2 id="_9">网络通信</h2>
 <h3 id="ping">ping</h3>
 <p>测试主机之间网络的连通性。</p>
-<p>例如：<code class="codehilite"><span class="n">ping</span> <span class="n">baidu</span><span class="p">.</span><span class="n">com</span></code></p>
+<p>例如：<code class="codehilite"><span class="err">ping baidu.com</span></code></p>
 <h3 id="ssh">ssh</h3>
 <p>连接远程服务器：<code class="codehilite"><span class="n">ssh</span> <span class="n">user</span><span class="mf">@192.168.1.100</span></code></p>
-<p>映射远程端口：<code class="codehilite"><span class="n">ssh</span> <span class="o">-</span><span class="n">L</span> <span class="err">本地端口</span><span class="p">:</span><span class="err">远程服务器</span><span class="p">:</span><span class="err">远程端口</span> <span class="err">远程服务器</span></code></p>
-<p>例如：<code class="codehilite"><span class="n">ssh</span> <span class="o">-</span><span class="n">L</span> <span class="mi">8888</span><span class="p">:</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8888</span> <span class="mi">192</span><span class="p">.</span><span class="mi">168</span><span class="p">.</span><span class="mi">1</span><span class="p">.</span><span class="mi">100</span></code> 可以把服务器上的 jupyter 监听的 8888 端口映射到本地的 8888 端口，然后只需要在浏览器里输入<code class="codehilite"><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8888</span></code> 就可以连接远程服务器的 jupyter 了。</p>
+<p>映射远程端口：<code class="codehilite"><span class="err">ssh -L 本地端口:远程服务器:远程端口 远程服务器</span></code></p>
+<p>例如：<code class="codehilite"><span class="err">ssh -L 8888:localhost:8888 192.168.1.100</span></code> 可以把服务器上的 jupyter 监听的 8888 端口映射到本地的 8888 端口，然后只需要在浏览器里输入<code class="codehilite"><span class="c">http://localhost:8888</span></code> 就可以连接远程服务器的 jupyter 了。</p>
 <h3 id="scp">scp</h3>
-<p>复制文件/文件夹到远程服务器，例如：<code class="codehilite"><span class="n">scp</span> <span class="err">文件</span> <span class="err">用户名</span><span class="o">@</span><span class="err">目标主机</span><span class="p">:</span><span class="err">目标主机路径</span></code></p>
+<p>复制文件/文件夹到远程服务器，例如：<code class="codehilite"><span class="err">scp 文件 用户名@目标主机:目标主机路径</span></code></p>
 <p>复制文件：<code class="codehilite"><span class="n">scp</span> <span class="n">file</span> <span class="n">user</span><span class="mf">@192.168.1.100</span><span class="o">:/</span><span class="n">data</span></code></p>
 <p>复制文件夹：<code class="codehilite"><span class="n">scp</span> <span class="o">-</span><span class="n">r</span> <span class="n">dir</span> <span class="n">user</span><span class="mf">@192.168.1.100</span><span class="o">:/</span><span class="n">data</span></code></p>
-<p>当你复制大量小文件时，请使用<code class="codehilite"><span class="n">rsync</span></code> 命令。</p>
+<p>当你复制大量小文件时，请使用<code class="codehilite"><span class="err">rsync</span></code> 命令。</p>
 <h3 id="rsync">rsync</h3>
 <p>同步文件/文件夹命令，带有增量备份功能，速度很快。</p>
 <p>参数：</p>
@@ -3099,15 +3099,16 @@ Swap:          976M          0B        976M
 <li>--exclude，排除文件，可以使用通配符</li>
 <li>-P，等同于 --partial --progress，显示备份过程。</li>
 </ul>
-<p>同步文件夹：<code class="codehilite"><span class="n">rsync</span> <span class="o">-</span><span class="n">avP</span> <span class="err">本地文件夹</span> <span class="err">用户名</span><span class="o">@</span><span class="err">远程服务器</span><span class="p">:</span><span class="err">远程地址</span></code></p>
+<p>同步文件夹：<code class="codehilite"><span class="err">rsync -avP 本地文件夹 用户名@远程服务器:远程地址</span></code></p>
 <script id="asciicast-eQjKRxlhu5vOThczbmkcmgbqH" src="https://asciinema.org/a/eQjKRxlhu5vOThczbmkcmgbqH.js" async></script>
 
 <h3 id="wget">wget</h3>
 <p>从指定的URL下载文件。</p>
-<p>下载单个文件：<code class="codehilite"><span class="n">wget</span> <span class="n">url</span></code></p>
-<p>下载并修改文件名：<code class="codehilite"><span class="n">wget</span> <span class="o">-</span><span class="n">O</span> <span class="n">filename</span><span class="p">.</span><span class="n">zip</span> <span class="n">url</span></code></p>
+<p>下载单个文件：<code class="codehilite"><span class="err">wget url</span></code></p>
+<p>下载并修改文件名：<code class="codehilite"><span class="err">wget -O filename.zip url</span></code></p>
                 
                   
+                
                 
               
               
@@ -3192,7 +3193,7 @@ Swap:          976M          0B        976M
       
     </div>
     
-      <script src="../assets/javascripts/application.a8b5e56f.js"></script>
+      <script src="../assets/javascripts/application.808e90bb.js"></script>
       
         
         

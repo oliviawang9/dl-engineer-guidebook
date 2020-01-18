@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
       
       <link rel="shortcut icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.5.0">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
     
     
       
@@ -62,7 +62,7 @@
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
@@ -1237,9 +1237,9 @@
 <span class="kn">from</span> <span class="nn">tensorboardX</span> <span class="kn">import</span> <span class="n">SummaryWriter</span>
 
 <span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">_%H%M%S&quot;</span><span class="p">,</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">())</span>
-<span class="n">model_name</span> <span class="o">=</span> <span class="n">f</span><span class="s1">&#39;crnn_{now}&#39;</span>
-<span class="k">print</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
-<span class="n">writer</span> <span class="o">=</span> <span class="n">SummaryWriter</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;logs/{model_name}&#39;</span><span class="p">)</span>
+<span class="n">model_name</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;crnn_</span><span class="si">{now}</span><span class="s1">&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model_name</span><span class="p">)</span>
+<span class="n">writer</span> <span class="o">=</span> <span class="n">SummaryWriter</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;logs/</span><span class="si">{model_name}</span><span class="s1">&#39;</span><span class="p">)</span>
 </pre></div>
 
 
@@ -1287,7 +1287,7 @@
 <p>双击 Model 就可以展开它，下面是展开到合理程度的模型结构图：</p>
 <p><img alt="CRNN" src="../imgs/image(28).png" /></p>
 <h3 id="scalar">记录标量（scalar）</h3>
-<p>使用 <code class="codehilite"><span class="n">writer</span><span class="p">.</span><span class="n">add_scalar</span></code> 就能轻松画出 loss 曲线，下面是经过简化的训练函数：</p>
+<p>使用 <code class="codehilite"><span class="err">writer.add_scalar</span></code> 就能轻松画出 loss 曲线，下面是经过简化的训练函数：</p>
 <div class="codehilite"><pre><span></span><span class="k">def</span> <span class="nf">train</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">dataloader</span><span class="p">,</span> <span class="n">writer</span><span class="p">):</span>
     <span class="c1"># ...</span>
     <span class="k">for</span> <span class="n">batch_index</span><span class="p">,</span> <span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">target</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">pbar</span><span class="p">):</span>
@@ -1303,14 +1303,14 @@
 </pre></div>
 
 
-<p>为了让多个图绘制在一个标签下，斜杠前面的名称需要统一，我这里以 <code class="codehilite"><span class="n">train</span><span class="o">/</span></code> 表示，在  TensorBoard 里就可以统一绘制在 train 这个标签内，展开和合并都比较方便。</p>
+<p>为了让多个图绘制在一个标签下，斜杠前面的名称需要统一，我这里以 <code class="codehilite"><span class="err">train/</span></code> 表示，在  TensorBoard 里就可以统一绘制在 train 这个标签内，展开和合并都比较方便。</p>
 <p>训练完以后的曲线如图：</p>
 <p><img alt="scalar" src="../imgs/image(41).png" /></p>
 <p>这里有一个小技巧，如果你想可视化正确率这种接近 1 的指标，最好使用错误率（1减正确率），因为当正确率非常接近 1 的时候，很难看出来趋势。使用 TensorBoard 切换到对数尺度下，就能轻松看出错误率的趋势了：</p>
 <p><img alt="logscale" src="../imgs/image(10).png" /></p>
 <p>在 30k 的时候，我把学习率降低了 10倍，继续训练了 10代，如果看上面的图，只能看出来 loss 更平缓了，但是下面的对数尺度下就可以明显看出来 loss 从 8e-3 下降到了 2e-3，下降了 4 倍。</p>
 <h3 id="scalars">记录多个标量（scalars）</h3>
-<p>很多时候我们都需要使用训练集的 loss 和验证集的 loss 做对比，以判断模型有没有过拟合。这时候使用 <code class="codehilite"><span class="n">writer</span><span class="p">.</span><span class="n">add_scalars</span></code> 就可以将多个标量绘制在同一张图里进行对比。下面是示例代码：</p>
+<p>很多时候我们都需要使用训练集的 loss 和验证集的 loss 做对比，以判断模型有没有过拟合。这时候使用 <code class="codehilite"><span class="err">writer.add_scalars</span></code> 就可以将多个标量绘制在同一张图里进行对比。下面是示例代码：</p>
 <div class="codehilite"><pre><span></span><span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">epochs</span> <span class="o">+</span> <span class="mi">1</span><span class="p">):</span>
     <span class="n">train_loss</span><span class="p">,</span> <span class="n">train_acc</span> <span class="o">=</span> <span class="n">train</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">optimizer</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">train_loader</span><span class="p">,</span> <span class="n">writer</span><span class="p">)</span>
     <span class="n">valid_loss</span><span class="p">,</span> <span class="n">valid_acc</span> <span class="o">=</span> <span class="n">valid</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">epoch</span><span class="p">,</span> <span class="n">valid_loader</span><span class="p">,</span> <span class="n">writer</span><span class="p">)</span>
@@ -1340,7 +1340,7 @@
         <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="n">ncol</span><span class="p">,</span> <span class="n">nrow</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
-        <span class="n">s</span> <span class="o">=</span> <span class="n">f</span><span class="s1">&#39;true: {decode_target(target[index])}</span><span class="se">\n</span><span class="s1">pred: {decode(output_argmax[index])}&#39;</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;true: {decode_target(target[index])}</span><span class="se">\n</span><span class="s1">pred: {decode(output_argmax[index])}&#39;</span>
         <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 
     <span class="n">fig</span><span class="o">.</span><span class="n">canvas</span><span class="o">.</span><span class="n">draw</span><span class="p">()</span>
@@ -1350,7 +1350,7 @@
 </pre></div>
 
 
-<p>首先为了避免影响训练，整个代码都需要在 <code class="codehilite"><span class="n">torch</span><span class="p">.</span><span class="n">no_grad</span><span class="p">()</span></code> 下进行。然后为了获取不好识别的样本，需要重新计算 loss，并且添加 <code class="codehilite"><span class="n">reduction</span><span class="o">=</span><span class="s1">&#39;none&#39;</span></code> 以计算每个样本的 loss。</p>
+<p>首先为了避免影响训练，整个代码都需要在 <code class="codehilite"><span class="err">torch.no_grad()</span></code> 下进行。然后为了获取不好识别的样本，需要重新计算 loss，并且添加 <code class="codehilite"><span class="err">reduction=&#39;none&#39;</span></code> 以计算每个样本的 loss。</p>
 <p>OCR 问题既需要图像，又需要文本，所以这里我们使用 matplotlib 绘制图像，然后得到矩阵比较方便。如果你只想拼接多个图像，可以使用 <code class="codehilite"><span class="kn">from</span> <span class="nn">torchvision.utils</span> <span class="kn">import</span> <span class="n">make_grid</span></code> 函数。</p>
 <p>下面是训练过程中的 badcase：</p>
 <p><img alt="badcase" src="../imgs/image(27).png" /></p>
@@ -1361,6 +1361,7 @@
 <p>使用 TensorBoard 可以监控训练过程中的 loss 趋势，及早发现问题。训练多个模型以后，还可以把多个模型的曲线放在一张图里横向对比。另外 badcase 分析也可以发现更多潜在的问题，为之后的优化寻找方向。可以说 TensorBoard 是每一个深度学习从业者的必备技能。</p>
                 
                   
+                
                 
               
               
@@ -1445,7 +1446,7 @@
       
     </div>
     
-      <script src="../assets/javascripts/application.a8b5e56f.js"></script>
+      <script src="../assets/javascripts/application.808e90bb.js"></script>
       
         
         

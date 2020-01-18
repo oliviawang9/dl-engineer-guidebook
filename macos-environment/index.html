@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
       
       <link rel="shortcut icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.5.0">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
     
     
       
@@ -62,7 +62,7 @@
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
@@ -1408,7 +1408,7 @@
 
 <h3 id="_1">切换源</h3>
 <p>如果你觉得使用brew安装和更新软件的时候非常慢，可以使用其他的镜像，如<a href="https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/">清华大学</a>：</p>
-<p>使用下面的命令可以加速 <code class="codehilite"><span class="n">brew</span> <span class="k">update</span></code> ：</p>
+<p>使用下面的命令可以加速 <code class="codehilite"><span class="err">brew update</span></code> ：</p>
 <div class="codehilite"><pre><span></span>git -C <span class="s2">&quot;</span><span class="k">$(</span>brew --repo<span class="k">)</span><span class="s2">&quot;</span> remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
 git -C <span class="s2">&quot;</span><span class="k">$(</span>brew --repo homebrew/core<span class="k">)</span><span class="s2">&quot;</span> remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
 git -C <span class="s2">&quot;</span><span class="k">$(</span>brew --repo homebrew/cask<span class="k">)</span><span class="s2">&quot;</span> remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask.git
@@ -1416,7 +1416,7 @@ brew update
 </pre></div>
 
 
-<p>设置下面的环境变量可以加速 <code class="codehilite"><span class="n">brew</span> <span class="n">install</span></code> ：</p>
+<p>设置下面的环境变量可以加速 <code class="codehilite"><span class="err">brew install</span></code> ：</p>
 <div class="codehilite"><pre><span></span><span class="nb">export</span> <span class="nv">HOMEBREW_BOTTLE_DOMAIN</span><span class="o">=</span>https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
 </pre></div>
 
@@ -1502,11 +1502,12 @@ bash Anaconda3-2019.03-MacOSX-x86_64.sh
 
 
 <p>通过上面的命令，你可以下载 Anaconda 安装包，然后安装 Anaconda。</p>
-<p>通过 <code class="codehilite"><span class="o">-</span><span class="k">c</span></code> 参数，可以接着上次的进度继续下载。</p>
+<p>通过 <code class="codehilite"><span class="err">-c</span></code> 参数，可以接着上次的进度继续下载。</p>
 <p>如：</p>
 <script id="asciicast-5iHU0tVcLZxUGUubbPG7U8AoY" src="https://asciinema.org/a/5iHU0tVcLZxUGUubbPG7U8AoY.js" async></script>
                 
                   
+                
                 
               
               
@@ -1591,7 +1592,7 @@ bash Anaconda3-2019.03-MacOSX-x86_64.sh
       
     </div>
     
-      <script src="../assets/javascripts/application.a8b5e56f.js"></script>
+      <script src="../assets/javascripts/application.808e90bb.js"></script>
       
         
         

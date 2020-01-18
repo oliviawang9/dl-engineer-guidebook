@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
       
       <link rel="shortcut icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.5.0">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
     
     
       
@@ -62,7 +62,7 @@
     
       
         <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
     
@@ -1285,7 +1285,7 @@
 <p>提示：</p>
 <ul>
 <li>如果离线服务器已经安装 conda，可以不用重复安装</li>
-<li>如果离线服务器已经有你需要的 Python 版本对应的虚拟环境，可以使用 <code class="codehilite"><span class="n">conda</span> <span class="k">create</span> <span class="c1">--clone</span></code> 克隆旧的虚拟环境</li>
+<li>如果离线服务器已经有你需要的 Python 版本对应的虚拟环境，可以使用 <code class="codehilite"><span class="err">conda create --clone</span></code> 克隆旧的虚拟环境</li>
 </ul>
 <h2 id="conda">下载 conda 安装包</h2>
 <p>如果你使用的 Python 版本是 Python 3.7，那么直接下载最新的 Anaconda 即可，自带 Python 3.7 以及许多机器学习环境，只需要离线安装一些深度学习库，这部分内容可以参考下面的下载whl文件。</p>
@@ -1310,9 +1310,9 @@ wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-L
 <script id="asciicast-sI5AYLfu71HaWTJiOLQrcauXJ" src="https://asciinema.org/a/sI5AYLfu71HaWTJiOLQrcauXJ.js" async></script>
 
 <h2 id="pkg-whl">下载 pkg 文件和 whl 文件</h2>
-<p><code class="codehilite"><span class="n">pip</span> <span class="n">download</span></code> 可以下载你所需要和依赖的 Python 库对应的 whl 安装包，但是你必须确保系统内核和 Python 版本一致。如果你使用的是 Mac，而目标机器是 Linux，那么你就不能够使用 <code class="codehilite"><span class="n">pip</span> <span class="n">download</span></code> 命令很方便地下载所有依赖的 whl 文件。为了简化这一问题，我们可以使用 Docker 创建一个 Linux 环境来完成下载任务。</p>
+<p><code class="codehilite"><span class="err">pip download</span></code> 可以下载你所需要和依赖的 Python 库对应的 whl 安装包，但是你必须确保系统内核和 Python 版本一致。如果你使用的是 Mac，而目标机器是 Linux，那么你就不能够使用 <code class="codehilite"><span class="err">pip download</span></code> 命令很方便地下载所有依赖的 whl 文件。为了简化这一问题，我们可以使用 Docker 创建一个 Linux 环境来完成下载任务。</p>
 <h3 id="miniconda">启动 miniconda 容器</h3>
-<p>通过 <code class="codehilite"><span class="o">-</span><span class="n">v</span></code> 参数，我们可以将 Docker 内部的 <code class="codehilite"><span class="o">/</span><span class="k">data</span></code> 路径和本地的 <code class="codehilite"><span class="o">~/</span><span class="n">Downloads</span><span class="o">/</span><span class="n">offline</span></code> 路径链接起来，这样当我们下载到 <code class="codehilite"><span class="o">/</span><span class="k">data</span></code> 时，就可以在本机的 <code class="codehilite"><span class="o">~/</span><span class="n">Downloads</span><span class="o">/</span><span class="n">offline</span></code> 文件夹里看到。</p>
+<p>通过 <code class="codehilite"><span class="err">-v</span></code> 参数，我们可以将 Docker 内部的 <code class="codehilite"><span class="err">/data</span></code> 路径和本地的 <code class="codehilite"><span class="err">~/Downloads/offline</span></code> 路径链接起来，这样当我们下载到 <code class="codehilite"><span class="err">/data</span></code> 时，就可以在本机的 <code class="codehilite"><span class="err">~/Downloads/offline</span></code> 文件夹里看到。</p>
 <div class="codehilite"><pre><span></span>docker run -it -v ~/Downloads/offline:/data -w /data continuumio/miniconda
 </pre></div>
 
@@ -1329,7 +1329,7 @@ conda config --set show_channel_urls yes
 <p>Anaconda 所有的库都是通过 pkg 安装的，我们只要下载这些 pkg 文件，即可创建我们想要的环境。</p>
 <p>首先删除 miniconda docker 里已有的 pkg 文件，因为 miniconda 默认安装了 Python 2.7，我们不希望在安装 Python 3.6 的时候有 Python 2.7 的 pkg 文件。</p>
 <p>然后我们创建一个 Python 3.6 环境。如果你希望安装 Python 的其他版本，可以在创建环境的时候自行修改版本号。</p>
-<p>创建好环境以后，所有需要的 pkg 文件（后缀名是 <code class="codehilite"><span class="na">.tar.bz2</span></code>）就会下载到 <code class="codehilite"><span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">conda</span><span class="o">/</span><span class="n">pkgs</span></code> 目录下，我们只需要把它们拷到 <code class="codehilite"><span class="o">/</span><span class="k">data</span></code> 目录下，即可在本机的下载文件夹里看见。</p>
+<p>创建好环境以后，所有需要的 pkg 文件（后缀名是 <code class="codehilite"><span class="na">.tar.bz2</span></code>）就会下载到 <code class="codehilite"><span class="err">/opt/conda/pkgs</span></code> 目录下，我们只需要把它们拷到 <code class="codehilite"><span class="err">/data</span></code> 目录下，即可在本机的下载文件夹里看见。</p>
 <div class="codehilite"><pre><span></span>rm -rf /opt/conda/pkgs
 
 conda create -n ypw <span class="nv">python</span><span class="o">=</span><span class="m">3</span>.6
@@ -1391,6 +1391,7 @@ conda install --offline ~/offline/pkgs/*
 <script id="asciicast-EHRE3XtioqXdTt5VLvRGWxzmQ" src="https://asciinema.org/a/EHRE3XtioqXdTt5VLvRGWxzmQ.js" async></script>
                 
                   
+                
                 
               
               
@@ -1461,7 +1462,7 @@ conda install --offline ~/offline/pkgs/*
       
     </div>
     
-      <script src="../assets/javascripts/application.a8b5e56f.js"></script>
+      <script src="../assets/javascripts/application.808e90bb.js"></script>
       
         
         

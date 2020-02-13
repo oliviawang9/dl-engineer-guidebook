@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
       
       <link rel="shortcut icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.2">
     
     
       
@@ -46,7 +46,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/application.1b62728e.css">
+      <link rel="stylesheet" href="../assets/stylesheets/application.adb8469c.css">
       
         <link rel="stylesheet" href="../assets/stylesheets/application-palette.a8b3c06d.css">
       
@@ -57,7 +57,7 @@
       
     
     
-      <script src="../assets/javascripts/modernizr.268332fc.js"></script>
+      <script src="../assets/javascripts/modernizr.86422ebf.js"></script>
     
     
       
@@ -116,7 +116,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#macos" tabindex="1" class="md-skip">
+      <a href="#macos" tabindex="0" class="md-skip">
         跳转至
       </a>
     
@@ -125,7 +125,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://dl.ypw.io" title="深度学习工程师生存指南" class="md-header-nav__button md-logo">
+        <a href="https://dl.ypw.io" title="深度学习工程师生存指南" aria-label="深度学习工程师生存指南" class="md-header-nav__button md-logo">
           
             <i class="md-icon"></i>
           
@@ -156,7 +156,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="__search"></label>
       <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
         &#xE5CD;
@@ -1392,33 +1392,33 @@
 <h2 id="homebrew"><a href="https://brew.sh/index_zh-cn">Homebrew</a></h2>
 <p>Homebrew 是 macOS 上的一个包管理器，你可以使用 Homebrew 安装 Apple 没有预装但<a href="https://formulae.brew.sh/formula/">你需要的东西</a>。</p>
 <p>安装 Homebrew 只需要一行命令：</p>
-<div class="codehilite"><pre><span></span>/usr/bin/ruby -e <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">&quot;</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code>/usr/bin/ruby -e <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install<span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
 
 
 <p>使用 Homebrew 安装一个 wget 吧：</p>
-<div class="codehilite"><pre><span></span>brew install wget
-</pre></div>
+<div class="codehilite"><pre><span></span><code>brew install wget
+</code></pre></div>
 
 
 <p>当你需要更新的时候，可以使用下面的命令完成：</p>
-<div class="codehilite"><pre><span></span>brew update <span class="o">&amp;&amp;</span> brew upgrade <span class="o">&amp;&amp;</span> brew cleanup
-</pre></div>
+<div class="codehilite"><pre><span></span><code>brew update <span class="o">&amp;&amp;</span> brew upgrade <span class="o">&amp;&amp;</span> brew cleanup
+</code></pre></div>
 
 
 <h3 id="_1">切换源</h3>
 <p>如果你觉得使用brew安装和更新软件的时候非常慢，可以使用其他的镜像，如<a href="https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/">清华大学</a>：</p>
 <p>使用下面的命令可以加速 <code class="codehilite"><span class="err">brew update</span></code> ：</p>
-<div class="codehilite"><pre><span></span>git -C <span class="s2">&quot;</span><span class="k">$(</span>brew --repo<span class="k">)</span><span class="s2">&quot;</span> remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
+<div class="codehilite"><pre><span></span><code>git -C <span class="s2">&quot;</span><span class="k">$(</span>brew --repo<span class="k">)</span><span class="s2">&quot;</span> remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
 git -C <span class="s2">&quot;</span><span class="k">$(</span>brew --repo homebrew/core<span class="k">)</span><span class="s2">&quot;</span> remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
 git -C <span class="s2">&quot;</span><span class="k">$(</span>brew --repo homebrew/cask<span class="k">)</span><span class="s2">&quot;</span> remote set-url origin https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-cask.git
 brew update
-</pre></div>
+</code></pre></div>
 
 
 <p>设置下面的环境变量可以加速 <code class="codehilite"><span class="err">brew install</span></code> ：</p>
-<div class="codehilite"><pre><span></span><span class="nb">export</span> <span class="nv">HOMEBREW_BOTTLE_DOMAIN</span><span class="o">=</span>https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
-</pre></div>
+<div class="codehilite"><pre><span></span><code><span class="nb">export</span> <span class="nv">HOMEBREW_BOTTLE_DOMAIN</span><span class="o">=</span>https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
+</code></pre></div>
 
 
 <h2 id="oh-my-zsh"><a href="https://ohmyz.sh/">Oh My Zsh</a></h2>
@@ -1436,51 +1436,51 @@ brew update
 <li>安装 <a href="https://ohmyz.sh/">oh my zsh</a></li>
 </ul>
 <p>完整命令如下：</p>
-<div class="codehilite"><pre><span></span>brew install zsh zsh-completions
+<div class="codehilite"><pre><span></span><code>brew install zsh zsh-completions
 sh -c <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span class="k">)</span><span class="s2">&quot;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>最后需要输入一次密码，记得输入正确，否则下一次启动终端就不会使用 zsh。如果你不小心错过了，可以用下面的命令手动切换默认终端：</p>
-<div class="codehilite"><pre><span></span>chsh -s /bin/zsh
-</pre></div>
+<div class="codehilite"><pre><span></span><code>chsh -s /bin/zsh
+</code></pre></div>
 
 
 <h2 id="_2">必备软件</h2>
 <p>使用 <a href="https://github.com/Homebrew/homebrew-cask">homebrew-cask</a> 可以轻松安装各种 macOS 软件，下面的命令可以安装一些必备软件：</p>
 <h3 id="_3">终端</h3>
-<div class="codehilite"><pre><span></span>brew cask install iTerm2
-</pre></div>
+<div class="codehilite"><pre><span></span><code>brew cask install iTerm2
+</code></pre></div>
 
 
 <h3 id="_4">编辑器</h3>
-<div class="codehilite"><pre><span></span>brew cask install Sublime-Text MacDown Typora Hex-Fiend 
-</pre></div>
+<div class="codehilite"><pre><span></span><code>brew cask install Sublime-Text MacDown Typora Hex-Fiend 
+</code></pre></div>
 
 
 <h3 id="_5">浏览器</h3>
-<div class="codehilite"><pre><span></span>brew cask install Google-Chrome
-</pre></div>
+<div class="codehilite"><pre><span></span><code>brew cask install Google-Chrome
+</code></pre></div>
 
 
 <h3 id="_6">开发软件</h3>
-<div class="codehilite"><pre><span></span>brew cask install PyCharm Anaconda GitHub Postman
-</pre></div>
+<div class="codehilite"><pre><span></span><code>brew cask install PyCharm Anaconda GitHub Postman
+</code></pre></div>
 
 
 <h3 id="_7">实用工具</h3>
-<div class="codehilite"><pre><span></span>brew cask install Netron Karabiner-Elements The-Unarchiver Caffeine
-</pre></div>
+<div class="codehilite"><pre><span></span><code>brew cask install Netron Karabiner-Elements The-Unarchiver Caffeine
+</code></pre></div>
 
 
 <h3 id="_8">日常应用</h3>
-<div class="codehilite"><pre><span></span>brew cask install WeChat QQ IINA BaiduNetdisk
-</pre></div>
+<div class="codehilite"><pre><span></span><code>brew cask install WeChat QQ IINA BaiduNetdisk
+</code></pre></div>
 
 
 <h2 id="_9">必备命令</h2>
-<div class="codehilite"><pre><span></span>brew install git htop nload wget
-</pre></div>
+<div class="codehilite"><pre><span></span><code>brew install git htop nload wget
+</code></pre></div>
 
 
 <h3 id="git">git</h3>
@@ -1496,9 +1496,9 @@ sh -c <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://
 
 <h3 id="wget">wget</h3>
 <p>很方便的命令行下载工具，比如：</p>
-<div class="codehilite"><pre><span></span>wget https://repo.anaconda.com/archive/Anaconda3-2019.03-MacOSX-x86_64.sh
+<div class="codehilite"><pre><span></span><code>wget https://repo.anaconda.com/archive/Anaconda3-2019.03-MacOSX-x86_64.sh
 bash Anaconda3-2019.03-MacOSX-x86_64.sh
-</pre></div>
+</code></pre></div>
 
 
 <p>通过上面的命令，你可以下载 Anaconda 安装包，然后安装 Anaconda。</p>
@@ -1567,22 +1567,22 @@ bash Anaconda3-2019.03-MacOSX-x86_64.sh
           </div>
         
         powered by
-        <a href="https://www.mkdocs.org">MkDocs</a>
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
         and
-        <a href="https://squidfunk.github.io/mkdocs-material/">
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
           Material for MkDocs</a>
       </div>
       
   <div class="md-footer-social">
     <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
     
-      <a href="https://github.com/ypwhs" class="md-footer-social__link fa fa-github"></a>
+      <a href="https://github.com/ypwhs" target="_blank" rel="noopener" title="github" class="md-footer-social__link fa fa-github"></a>
     
-      <a href="https://www.zhihu.com/people/yangpw" class="md-footer-social__link fa fa-book"></a>
+      <a href="https://www.zhihu.com/people/yangpw" target="_blank" rel="noopener" title="book" class="md-footer-social__link fa fa-book"></a>
     
-      <a href="https://ypw.io" class="md-footer-social__link fa fa-globe"></a>
+      <a href="https://ypw.io" target="_blank" rel="noopener" title="globe" class="md-footer-social__link fa fa-globe"></a>
     
-      <a href="https://www.linkedin.com/in/ypwhs/" class="md-footer-social__link fa fa-linkedin"></a>
+      <a href="https://www.linkedin.com/in/ypwhs/" target="_blank" rel="noopener" title="linkedin" class="md-footer-social__link fa fa-linkedin"></a>
     
   </div>
 
@@ -1592,7 +1592,7 @@ bash Anaconda3-2019.03-MacOSX-x86_64.sh
       
     </div>
     
-      <script src="../assets/javascripts/application.808e90bb.js"></script>
+      <script src="../assets/javascripts/application.c33a9706.js"></script>
       
         
         

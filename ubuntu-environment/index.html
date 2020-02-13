@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
       
       <link rel="shortcut icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.2">
     
     
       
@@ -46,7 +46,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/application.1b62728e.css">
+      <link rel="stylesheet" href="../assets/stylesheets/application.adb8469c.css">
       
         <link rel="stylesheet" href="../assets/stylesheets/application-palette.a8b3c06d.css">
       
@@ -57,7 +57,7 @@
       
     
     
-      <script src="../assets/javascripts/modernizr.268332fc.js"></script>
+      <script src="../assets/javascripts/modernizr.86422ebf.js"></script>
     
     
       
@@ -116,7 +116,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#ubuntu" tabindex="1" class="md-skip">
+      <a href="#ubuntu" tabindex="0" class="md-skip">
         跳转至
       </a>
     
@@ -125,7 +125,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://dl.ypw.io" title="深度学习工程师生存指南" class="md-header-nav__button md-logo">
+        <a href="https://dl.ypw.io" title="深度学习工程师生存指南" aria-label="深度学习工程师生存指南" class="md-header-nav__button md-logo">
           
             <i class="md-icon"></i>
           
@@ -156,7 +156,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="__search"></label>
       <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
         &#xE5CD;
@@ -2066,41 +2066,41 @@
 <h2 id="pytorch"><a href="https://pytorch.org/">PyTorch</a></h2>
 <p>PyTorch 自带 CUDA 和 cuDNN，只需要安装 NVIDIA 驱动即可运行。</p>
 <p>目前 <a href="https://pypi.org/">PyPI</a> 安装的 PyTorch 使用的是 CUDA9.0，如果你需要其他版本，请使用官网上的选择器找到你需要的版本，比如 Python 3.7 安装 CUDA10 的 PyTorch 需要使用下面的命令：</p>
-<div class="codehilite"><pre><span></span>pip3 install https://download.pytorch.org/whl/cu100/torch-1.1.0-cp37-cp37m-linux_x86_64.whl
+<div class="codehilite"><pre><span></span><code>pip3 install https://download.pytorch.org/whl/cu100/torch-1.1.0-cp37-cp37m-linux_x86_64.whl
 pip3 install https://download.pytorch.org/whl/cu100/torchvision-0.3.0-cp37-cp37m-linux_x86_64.whl
-</pre></div>
+</code></pre></div>
 
 
 <h2 id="_2">必备命令</h2>
-<div class="codehilite"><pre><span></span>sudo apt install git curl htop nload tmux screen aria2 graphviz aptitude tree
-</pre></div>
+<div class="codehilite"><pre><span></span><code>sudo apt install git curl htop nload tmux screen aria2 graphviz aptitude tree
+</code></pre></div>
 
 
 <p>常见的 git、htop、nload 等命令在 <a href="../macos-environment/#bi-bei-ming-ling">macOS 环境</a> 里已经介绍过了。其实大部分命令在没有安装的时候，如果你使用它们，会自动提示需要安装，所以不用担心没有安装全：</p>
-<div class="codehilite"><pre><span></span>ypw@ypw-ubuntu:~$ screen
+<div class="codehilite"><pre><span></span><code>ypw@ypw-ubuntu:~$ screen
 
 Command <span class="s1">&#39;screen&#39;</span> not found, but can be installed with:
 
 sudo apt install screen
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="curl">curl</h3>
 <p>curl 是一个多功能的网络操作命令，你可以使用它来发送 GET、POST 请求。</p>
 <p>在开发服务的时候，我们会经常使用这个命令来测试服务是否能返回预期的结果。</p>
 <p>GET：</p>
-<div class="codehilite"><pre><span></span>curl https://dl.ypw.io
-</pre></div>
+<div class="codehilite"><pre><span></span><code>curl https://dl.ypw.io
+</code></pre></div>
 
 
 <p>POST：</p>
-<div class="codehilite"><pre><span></span>curl -d <span class="s2">&quot;param1=value1&amp;param2=value2&quot;</span> -X POST http://localhost:3000/data
-</pre></div>
+<div class="codehilite"><pre><span></span><code>curl -d <span class="s2">&quot;param1=value1&amp;param2=value2&quot;</span> -X POST http://localhost:3000/data
+</code></pre></div>
 
 
 <p>POST json：</p>
-<div class="codehilite"><pre><span></span>curl -d <span class="s1">&#39;{&quot;key1&quot;:&quot;value1&quot;, &quot;key2&quot;:&quot;value2&quot;}&#39;</span> -H <span class="s2">&quot;Content-Type: application/json&quot;</span> -X POST http://localhost:3000/data
-</pre></div>
+<div class="codehilite"><pre><span></span><code>curl -d <span class="s1">&#39;{&quot;key1&quot;:&quot;value1&quot;, &quot;key2&quot;:&quot;value2&quot;}&#39;</span> -H <span class="s2">&quot;Content-Type: application/json&quot;</span> -X POST http://localhost:3000/data
+</code></pre></div>
 
 
 <h3 id="tmux">tmux</h3>
@@ -2108,8 +2108,8 @@ sudo apt install screen
 <p>tmux 是一个优秀的终端复用器命令，用户可以通过tmux 在一个终端内管理多个分离的会话，窗口及面板，对于同时使用多个命令行，或多个任务时非常方便。</p>
 <h4 id="_3">创建会话</h4>
 <p>比如你想同时监控 CPU、内存、显卡使用情况，那么你可以在使用 iTerm2 的情况下，执行下面的命令开启一个 tmux 会话(session)：</p>
-<div class="codehilite"><pre><span></span>tmux -CC new -s monitor
-</pre></div>
+<div class="codehilite"><pre><span></span><code>tmux -CC new -s monitor
+</code></pre></div>
 
 
 <p>其中的 monitor 是这个会话的名字，你可以修改为自己喜欢的名字。</p>
@@ -2126,7 +2126,7 @@ sudo apt install screen
 <p><img alt="tmux" src="../imgs/image(29).png" /></p>
 <h4 id="_5">脱离会话</h4>
 <p>如果你想让 python 脚本在后台运行，只需要在刚才创建会话的地方按一下 esc 键，就可以脱离这个会话。</p>
-<div class="codehilite"><pre><span></span>➜  ~ tmux -CC new -s monitor
+<div class="codehilite"><pre><span></span><code>➜  ~ tmux -CC new -s monitor
 ** tmux mode started **
 
 Command Menu
@@ -2135,7 +2135,7 @@ esc    Detach cleanly.
   X    Force-quit tmux mode.
   L    Toggle logging.
   C    Run tmux command.
-</pre></div>
+</code></pre></div>
 
 
 <p>你也可以直接关闭开启会话的终端的窗口，效果一样。</p>
@@ -2146,21 +2146,21 @@ esc    Detach cleanly.
 <h3 id="screen">screen</h3>
 <p>screen 和 tmux 一样都是在后台运行命令的工具。</p>
 <h4 id="_8">新建窗口</h4>
-<div class="codehilite"><pre><span></span>screen -S jupyter
-</pre></div>
+<div class="codehilite"><pre><span></span><code>screen -S jupyter
+</code></pre></div>
 
 
 <p>其中 -S 后面跟的是 screen 的名字。</p>
 <h4 id="_9">恢复窗口</h4>
-<div class="codehilite"><pre><span></span>screen -r jupyter
-</pre></div>
+<div class="codehilite"><pre><span></span><code>screen -r jupyter
+</code></pre></div>
 
 
 <p>其中 -r 后面跟的是 screen 的名字。</p>
 <h4 id="_10">退出窗口</h4>
 <p>你可以在窗口中使用 exit 命令退出窗口，也可以使用下面的命令：</p>
-<div class="codehilite"><pre><span></span>screen -X -S jupyter quit
-</pre></div>
+<div class="codehilite"><pre><span></span><code>screen -X -S jupyter quit
+</code></pre></div>
 
 
 <p>其中 -S 后面跟的是 screen 的名字。</p>
@@ -2169,7 +2169,7 @@ esc    Detach cleanly.
 <h4 id="_11">进入拷贝模式</h4>
 <p>输入快捷键 <code class="codehilite"><span class="err">Ctrl + a + [</span></code> 进入拷贝模式，然后你就可以使用方向键、翻页键进行翻页。</p>
 <p>下面是拷贝模式下的常用快捷键：</p>
-<div class="codehilite"><pre><span></span>h -    Move the cursor left by one character
+<div class="codehilite"><pre><span></span><code>h -    Move the cursor left by one character
 j -    Move the cursor down by one line
 k -    Move the cursor up by one line
 l -    Move the cursor right by one character
@@ -2181,7 +2181,7 @@ C-u -  Scrolls a half page up.
 C-b -  Scrolls a full page up.
 C-d -  Scrolls a half page down.
 C-f -  Scrolls the full page down.
-</pre></div>
+</code></pre></div>
 
 
 <p>如果你记不得这么多快捷键，推荐 iTerm2 + tmux 的组合。</p>
@@ -2247,22 +2247,22 @@ C-f -  Scrolls the full page down.
           </div>
         
         powered by
-        <a href="https://www.mkdocs.org">MkDocs</a>
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
         and
-        <a href="https://squidfunk.github.io/mkdocs-material/">
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
           Material for MkDocs</a>
       </div>
       
   <div class="md-footer-social">
     <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
     
-      <a href="https://github.com/ypwhs" class="md-footer-social__link fa fa-github"></a>
+      <a href="https://github.com/ypwhs" target="_blank" rel="noopener" title="github" class="md-footer-social__link fa fa-github"></a>
     
-      <a href="https://www.zhihu.com/people/yangpw" class="md-footer-social__link fa fa-book"></a>
+      <a href="https://www.zhihu.com/people/yangpw" target="_blank" rel="noopener" title="book" class="md-footer-social__link fa fa-book"></a>
     
-      <a href="https://ypw.io" class="md-footer-social__link fa fa-globe"></a>
+      <a href="https://ypw.io" target="_blank" rel="noopener" title="globe" class="md-footer-social__link fa fa-globe"></a>
     
-      <a href="https://www.linkedin.com/in/ypwhs/" class="md-footer-social__link fa fa-linkedin"></a>
+      <a href="https://www.linkedin.com/in/ypwhs/" target="_blank" rel="noopener" title="linkedin" class="md-footer-social__link fa fa-linkedin"></a>
     
   </div>
 
@@ -2272,7 +2272,7 @@ C-f -  Scrolls the full page down.
       
     </div>
     
-      <script src="../assets/javascripts/application.808e90bb.js"></script>
+      <script src="../assets/javascripts/application.c33a9706.js"></script>
       
         
         

@@ -38,7 +38,7 @@
         <meta name="lang:search.tokenizer" content="[\uff0c\u3002]+">
       
       <link rel="shortcut icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.0">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.2">
     
     
       
@@ -46,7 +46,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/application.1b62728e.css">
+      <link rel="stylesheet" href="../assets/stylesheets/application.adb8469c.css">
       
         <link rel="stylesheet" href="../assets/stylesheets/application-palette.a8b3c06d.css">
       
@@ -57,7 +57,7 @@
       
     
     
-      <script src="../assets/javascripts/modernizr.268332fc.js"></script>
+      <script src="../assets/javascripts/modernizr.86422ebf.js"></script>
     
     
       
@@ -116,7 +116,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#ubuntu" tabindex="1" class="md-skip">
+      <a href="#ubuntu" tabindex="0" class="md-skip">
         跳转至
       </a>
     
@@ -125,7 +125,7 @@
   <nav class="md-header-nav md-grid">
     <div class="md-flex">
       <div class="md-flex__cell md-flex__cell--shrink">
-        <a href="https://dl.ypw.io" title="深度学习工程师生存指南" class="md-header-nav__button md-logo">
+        <a href="https://dl.ypw.io" title="深度学习工程师生存指南" aria-label="深度学习工程师生存指南" class="md-header-nav__button md-logo">
           
             <i class="md-icon"></i>
           
@@ -156,7 +156,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
       <label class="md-icon md-search__icon" for="__search"></label>
       <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
         &#xE5CD;
@@ -1802,14 +1802,14 @@
 <h2 id="ssh">配置 ssh</h2>
 <h3 id="openssh-server">安装 openssh-server</h3>
 <p>装好 Ubuntu 以后，为了能够方便地在其他终端上远程连接，安装各种软件，我一般会先装 openssh-server。</p>
-<div class="codehilite"><pre><span></span>sudo apt update
+<div class="codehilite"><pre><span></span><code>sudo apt update
 sudo apt install openssh-server
-</pre></div>
+</code></pre></div>
 
 
 <p>装好了以后，就可以在终端里通过下面的命令连接服务器。</p>
-<div class="codehilite"><pre><span></span>ssh <span class="m">192</span>.168.8.65
-</pre></div>
+<div class="codehilite"><pre><span></span><code>ssh <span class="m">192</span>.168.8.65
+</code></pre></div>
 
 
 <p>使用到的命令：<a href="../linux-command/#apt">apt</a>、<a href="../linux-command/#ssh">ssh</a></p>
@@ -1827,38 +1827,38 @@ sudo apt install openssh-server
 </blockquote>
 <h3 id="ubuntu-ssh-key">在 Ubuntu 服务器上添加刚才生成的 ssh key</h3>
 <p>首先使用密码登录刚才的机器：</p>
-<div class="codehilite"><pre><span></span>ssh <span class="m">192</span>.168.8.65
-</pre></div>
+<div class="codehilite"><pre><span></span><code>ssh <span class="m">192</span>.168.8.65
+</code></pre></div>
 
 
 <p>然后创建 <code class="codehilite"><span class="err">~/.ssh</span></code> 目录，并且创建 <code class="codehilite"><span class="err">~/.ssh/authorized_keys</span></code> 文件，配置好相应的权限：</p>
-<div class="codehilite"><pre><span></span>mkdir -p ~/.ssh
+<div class="codehilite"><pre><span></span><code>mkdir -p ~/.ssh
 touch ~/.ssh/authorized_keys
 chmod <span class="m">700</span> ~/.ssh
 chmod <span class="m">600</span> ~/.ssh/authorized_keys
 nano ~/.ssh/authorized_keys
 
 <span class="c1"># 添加你的公钥，如 ssh-rsa AAAA...</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>把刚才生成的公钥 <code class="codehilite"><span class="err">id_rsa.pub</span></code> 添加到 <code class="codehilite"><span class="err">~/.ssh/authorized_keys</span></code> 里，如果文件已经有内容，就添加在最后一行。这样以后<strong>每次使用 ssh 登录机器都不需要再输入密码了</strong>。</p>
 <p>使用到的命令：<a href="../linux-command/#mkdir">mkdir</a>、<a href="../linux-command/#touch">touch</a>、<a href="../linux-command/#chmod">chmod</a>、<a href="../linux-command/#nano">nano</a></p>
 <h3 id="_1">禁止密码登录</h3>
 <p>由于密码登录存在不安全因素，比如暴露在公网的 IP 会被扫描，而 key 是相对安全的，所以我们可以禁止不安全的密码登录：</p>
-<div class="codehilite"><pre><span></span>sudo nano /etc/ssh/sshd_config
+<div class="codehilite"><pre><span></span><code>sudo nano /etc/ssh/sshd_config
 
 PasswordAuthentication no <span class="c1"># 添加在最后一行</span>
-</pre></div>
+</code></pre></div>
 
 
 <h2 id="sudo-apt">配置 sudo 免密码 和 apt 源</h2>
 <h3 id="sudo">配置 sudo 免密码</h3>
 <p>由于安装驱动等操作需要 sudo 权限，为了避免频繁输入密码，可以配置 sudo 免密码：</p>
-<div class="codehilite"><pre><span></span>sudo nano /etc/sudoers
+<div class="codehilite"><pre><span></span><code>sudo nano /etc/sudoers
 
 ypw <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</span> NOPASSWD:ALL <span class="c1"># 添加在最后一行</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="apt">配置 apt 源</h3>
@@ -1868,7 +1868,7 @@ ypw <span class="nv">ALL</span><span class="o">=(</span>ALL<span class="o">)</sp
 <li><a href="https://opsx.alibaba.com/mirror">https://opsx.alibaba.com/mirror</a></li>
 </ul>
 <p>下面以清华大学开源软件镜像站为例：</p>
-<div class="codehilite"><pre><span></span>sudo mv /etc/apt/sources.list /etc/apt/sources_backup.list
+<div class="codehilite"><pre><span></span><code>sudo mv /etc/apt/sources.list /etc/apt/sources_backup.list
 sudo nano /etc/apt/sources.list
 
 <span class="c1"># 添加下面的内容，保存</span>
@@ -1880,17 +1880,17 @@ deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricte
 <span class="c1"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-backports main restricted universe multiverse</span>
 deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse
 <span class="c1"># deb-src https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted universe multiverse</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>添加好以后，使用下面的命令更新 apt 以后，安装其他软件包的速度就会变快：</p>
-<div class="codehilite"><pre><span></span>sudo apt update
-</pre></div>
+<div class="codehilite"><pre><span></span><code>sudo apt update
+</code></pre></div>
 
 
 <p>恢复默认源：</p>
-<div class="codehilite"><pre><span></span>sudo mv /etc/apt/sources_backup.list /etc/apt/sources.list
-</pre></div>
+<div class="codehilite"><pre><span></span><code>sudo mv /etc/apt/sources_backup.list /etc/apt/sources.list
+</code></pre></div>
 
 
 <h2 id="oh-my-zsh">安装 oh my zsh 以及常用命令</h2>
@@ -1906,15 +1906,15 @@ deb https://mirrors.tuna.tsinghua.edu.cn/ubuntu/ bionic-security main restricted
 <li>安装 <a href="https://ohmyz.sh/">oh my zsh</a></li>
 </ul>
 <p>完整命令如下：</p>
-<div class="codehilite"><pre><span></span>sudo apt install -y git curl zsh
+<div class="codehilite"><pre><span></span><code>sudo apt install -y git curl zsh
 sh -c <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh<span class="k">)</span><span class="s2">&quot;</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="_2">常用命令</h3>
 <p>这些是我眼中的<a href="../ubuntu-environment/#bi-bei-ming-ling">必备命令</a>，你可以按照自己的需要安装：</p>
-<div class="codehilite"><pre><span></span>sudo apt install -y git curl htop nload tmux screen aria2 graphviz aptitude tree
-</pre></div>
+<div class="codehilite"><pre><span></span><code>sudo apt install -y git curl htop nload tmux screen aria2 graphviz aptitude tree
+</code></pre></div>
 
 
 <h2 id="nvidia-cuda-cudnnapt">安装 NVIDIA 驱动、CUDA 和 cuDNN（apt）</h2>
@@ -1922,7 +1922,7 @@ sh -c <span class="s2">&quot;</span><span class="k">$(</span>curl -fsSL https://
 <h3 id="apt_1">使用 apt 安装驱动</h3>
 <p>安装过程可以参考 TensorFlow 的教程：<a href="https://www.tensorflow.org/install/gpu">https://www.tensorflow.org/install/gpu</a></p>
 <p>下面是我安装的命令：</p>
-<div class="codehilite"><pre><span></span><span class="c1"># Add NVIDIA package repositories</span>
+<div class="codehilite"><pre><span></span><code><span class="c1"># Add NVIDIA package repositories</span>
 wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/cuda-repo-ubuntu1804_10.0.130-1_amd64.deb
 sudo dpkg -i cuda-repo-ubuntu1804_10.0.130-1_amd64.deb
 sudo apt-key adv --fetch-keys https://developer.download.nvidia.com/compute/cuda/repos/ubuntu1804/x86_64/7fa2af80.pub
@@ -1934,30 +1934,30 @@ sudo apt update
 <span class="c1"># Install NVIDIA driver</span>
 sudo aptitude install nvidia-driver-410
 <span class="c1"># Reboot. Check that GPUs are visible using the command: nvidia-smi</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>如果因为网络原因导致下载很慢，可以使用下面的命令让 apt 使用代理：</p>
-<div class="codehilite"><pre><span></span>sudo nano /etc/apt/apt.conf
+<div class="codehilite"><pre><span></span><code>sudo nano /etc/apt/apt.conf
 
 <span class="c1"># 下面的内容按照实际情况进行修改</span>
 Acquire::http::Proxy <span class="s2">&quot;http://192.168.8.246:1087&quot;</span><span class="p">;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>为了避免重启以后鼠标键盘没反应，需要运行下面的命令：</p>
-<div class="codehilite"><pre><span></span>sudo apt install --reinstall xserver-xorg-input-all
-</pre></div>
+<div class="codehilite"><pre><span></span><code>sudo apt install --reinstall xserver-xorg-input-all
+</code></pre></div>
 
 
 <h3 id="_3">测试显卡</h3>
 <p>装好系统以后需要重新启动机器，重启以后运行下面的命令即可测试显卡：</p>
-<div class="codehilite"><pre><span></span>nvidia-smi
-</pre></div>
+<div class="codehilite"><pre><span></span><code>nvidia-smi
+</code></pre></div>
 
 
 <p>如果能看到类似的内容就说明显卡驱动装好了：</p>
-<div class="codehilite"><pre><span></span>Sun Jul 21 12:05:35 2019
+<div class="codehilite"><pre><span></span><code>Sun Jul 21 12:05:35 2019
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 410.104      Driver Version: 410.104      CUDA Version: 10.0     |
 |-------------------------------+----------------------+----------------------+
@@ -1974,7 +1974,7 @@ Acquire::http::Proxy <span class="s2">&quot;http://192.168.8.246:1087&quot;</spa
 |=============================================================================|
 |  No running processes found                                                 |
 +-----------------------------------------------------------------------------+
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="cuda-cudnn">安装 CUDA 和 cuDNN</h3>
@@ -1983,28 +1983,28 @@ Acquire::http::Proxy <span class="s2">&quot;http://192.168.8.246:1087&quot;</spa
 <li>此步骤需下载较大的安装包</li>
 <li>PyTorch 用户可以不安装 CUDA 和 cuDNN</li>
 </ul>
-<div class="codehilite"><pre><span></span>sudo apt install --no-install-recommends <span class="se">\</span>
+<div class="codehilite"><pre><span></span><code>sudo apt install --no-install-recommends <span class="se">\</span>
     cuda-10-0 <span class="se">\</span>
     <span class="nv">libcudnn7</span><span class="o">=</span><span class="m">7</span>.6.0.64-1+cuda10.0  <span class="se">\</span>
     libcudnn7-dev<span class="o">=</span><span class="m">7</span>.6.0.64-1+cuda10.0
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="_4">配置环境变量</h3>
 <p>安装好以后还需要<a href="../linux-command/#export">配置环境变量</a>，这里我以 <code class="codehilite"><span class="err">~/.zshrc</span></code> 为例：</p>
-<div class="codehilite"><pre><span></span>nano ~/.zshrc
+<div class="codehilite"><pre><span></span><code>nano ~/.zshrc
 
 <span class="c1"># 添加下面的内容</span>
 <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/usr/local/cuda/bin:<span class="nv">$PATH</span>
 <span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/usr/local/cuda/lib64:<span class="nv">$LD_LIBRARY_PATH</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="tensorrt">安装 TensorRT（可选）</h3>
-<div class="codehilite"><pre><span></span>sudo apt update
+<div class="codehilite"><pre><span></span><code>sudo apt update
 sudo apt install -y --no-install-recommends <span class="nv">libnvinfer5</span><span class="o">=</span><span class="m">5</span>.1.5-1+cuda10.0
 sudo apt install -y --no-install-recommends libnvinfer-dev<span class="o">=</span><span class="m">5</span>.1.5-1+cuda10.0
-</pre></div>
+</code></pre></div>
 
 
 <h2 id="nvidia-cuda-cudnnrun">安装 NVIDIA 驱动、CUDA 和 cuDNN（run）</h2>
@@ -2017,8 +2017,8 @@ sudo apt install -y --no-install-recommends libnvinfer-dev<span class="o">=</spa
 <li>在自己机器上找到下载地址，然后在 Ubuntu 机器上使用 wget 命令下载</li>
 </ul>
 <p>以上方法可以根据实际情况选择，这里我选择第三种方法：</p>
-<div class="codehilite"><pre><span></span>wget https://cn.download.nvidia.cn/XFree86/Linux-x86_64/430.34/NVIDIA-Linux-x86_64-430.34.run
-</pre></div>
+<div class="codehilite"><pre><span></span><code>wget https://cn.download.nvidia.cn/XFree86/Linux-x86_64/430.34/NVIDIA-Linux-x86_64-430.34.run
+</code></pre></div>
 
 
 <h3 id="nouveau">屏蔽 Nouveau</h3>
@@ -2027,7 +2027,7 @@ sudo apt install -y --no-install-recommends libnvinfer-dev<span class="o">=</spa
 <p>ERROR: The Nouveau kernel driver is currently in use by your system. This driver is incompatible with the NVIDIA driver, and must be disabled before proceeding. Please consult the NVIDIA driver README and your Linux distribution's documentation for details on how to correctly disable the Nouveau kernel driver.</p>
 </blockquote>
 <p>命令：</p>
-<div class="codehilite"><pre><span></span>sudo nano /etc/modprobe.d/blacklist-nouveau.conf
+<div class="codehilite"><pre><span></span><code>sudo nano /etc/modprobe.d/blacklist-nouveau.conf
 
 <span class="c1"># 添加以下内容</span>
 
@@ -2038,7 +2038,7 @@ options nouveau <span class="nv">modeset</span><span class="o">=</span><span cla
 
 sudo update-initramfs -u
 sudo reboot
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="_6">安装必要的编译工具</h3>
@@ -2047,23 +2047,23 @@ sudo reboot
 <p>ERROR: Unable to find the development tool <code class="codehilite"><span class="err">cc</span></code> in your path; please make sure that you have the package 'gcc' installed. If gcc is installed on your system, then please check that <code class="codehilite"><span class="err">cc</span></code> is in your PATH.</p>
 </blockquote>
 <p>命令：</p>
-<div class="codehilite"><pre><span></span>sudo apt install -y build-essential gcc g++ make binutils linux-headers-<span class="sb">`</span>uname -r<span class="sb">`</span>
-</pre></div>
+<div class="codehilite"><pre><span></span><code>sudo apt install -y build-essential gcc g++ make binutils linux-headers-<span class="sb">`</span>uname -r<span class="sb">`</span>
+</code></pre></div>
 
 
 <h3 id="_7">安装显卡驱动</h3>
-<div class="codehilite"><pre><span></span>sudo bash NVIDIA-Linux-x86_64-430.34.run
-</pre></div>
+<div class="codehilite"><pre><span></span><code>sudo bash NVIDIA-Linux-x86_64-430.34.run
+</code></pre></div>
 
 
 <p>安装步骤很简单，一直下一步就好了。</p>
 <h3 id="_8">测试显卡</h3>
-<div class="codehilite"><pre><span></span>nvidia-smi
-</pre></div>
+<div class="codehilite"><pre><span></span><code>nvidia-smi
+</code></pre></div>
 
 
 <p>如果能看到类似的内容就说明显卡驱动装好了：</p>
-<div class="codehilite"><pre><span></span>Sun Jul 21 10:37:16 2019
+<div class="codehilite"><pre><span></span><code>Sun Jul 21 10:37:16 2019
 +-----------------------------------------------------------------------------+
 | NVIDIA-SMI 430.34       Driver Version: 430.34       CUDA Version: 10.1     |
 |-------------------------------+----------------------+----------------------+
@@ -2080,7 +2080,7 @@ sudo reboot
 |=============================================================================|
 |  No running processes found                                                 |
 +-----------------------------------------------------------------------------+
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="cuda-cudnn_1">安装 CUDA 和 cuDNN</h3>
@@ -2088,12 +2088,12 @@ sudo reboot
 <p>提示：PyTorch 用户可以不安装 CUDA 和 cuDNN。</p>
 <h3 id="cuda-100">安装 CUDA 10.0</h3>
 <p>由于此安装包比较大，建议使用 aria2c 下载：</p>
-<div class="codehilite"><pre><span></span>aria2c -x <span class="m">16</span> https://developer.nvidia.com/compute/cuda/10.0/Prod/local_installers/cuda_10.0.130_410.48_linux
-</pre></div>
+<div class="codehilite"><pre><span></span><code>aria2c -x <span class="m">16</span> https://developer.nvidia.com/compute/cuda/10.0/Prod/local_installers/cuda_10.0.130_410.48_linux
+</code></pre></div>
 
 
 <p>下载好了以后，直接运行安装即可：</p>
-<div class="codehilite"><pre><span></span>sudo bash cuda_10.0.130_410.48_linux.run
+<div class="codehilite"><pre><span></span><code>sudo bash cuda_10.0.130_410.48_linux.run
 
 <span class="c1"># 按 q 退出 EULA</span>
 
@@ -2125,7 +2125,7 @@ Installing the CUDA Toolkit in /usr/local/cuda-10.0 ...
 Driver:   Not Selected
 Toolkit:  Installed in /usr/local/cuda-10.0
 Samples:  Not Selected
-</pre></div>
+</code></pre></div>
 
 
 <p>可以按照自己的需要请配置下面的选项，比如你想学习使用 C/C++ 编写 CUDA 程序，可以安装 Samples。</p>
@@ -2138,29 +2138,29 @@ Samples:  Not Selected
 </ul>
 </blockquote>
 <p>需要按照上面的指示<a href="../linux-command/#export">配置环境变量</a>，这里我以 <code class="codehilite"><span class="err">~/.zshrc</span></code> 为例：</p>
-<div class="codehilite"><pre><span></span>nano ~/.zshrc
+<div class="codehilite"><pre><span></span><code>nano ~/.zshrc
 
 <span class="c1"># 添加下面的内容</span>
 <span class="nb">export</span> <span class="nv">PATH</span><span class="o">=</span>/usr/local/cuda/bin:<span class="nv">$PATH</span>
 <span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span>/usr/local/cuda/lib64:<span class="nv">$PATH</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="cudnn">安装 cuDNN</h3>
 <p>同样，下载 cudnn-10.0-linux-x64-v7.6.0.64.tgz：</p>
-<div class="codehilite"><pre><span></span>aria2c -x <span class="m">16</span> http://developer.download.nvidia.com/compute/redist/cudnn/v7.6.0/cudnn-10.0-linux-x64-v7.6.0.64.tgz
-</pre></div>
+<div class="codehilite"><pre><span></span><code>aria2c -x <span class="m">16</span> http://developer.download.nvidia.com/compute/redist/cudnn/v7.6.0/cudnn-10.0-linux-x64-v7.6.0.64.tgz
+</code></pre></div>
 
 
 <p>然后安装到 <code class="codehilite"><span class="err">/usr/local</span></code> 目录下：</p>
-<div class="codehilite"><pre><span></span>sudo tar -xzf cudnn-10.0-linux-x64-v7.6.0.64.tgz -C /usr/local
-</pre></div>
+<div class="codehilite"><pre><span></span><code>sudo tar -xzf cudnn-10.0-linux-x64-v7.6.0.64.tgz -C /usr/local
+</code></pre></div>
 
 
 <h2 id="anaconda-python">安装 Anaconda 和 Python 库</h2>
 <h3 id="anaconda">安装 Anaconda</h3>
 <p>安装 Anaconda 和 Python 库的步骤都已经写在了 <a href="../python-environment/">Pyhton 环境</a>，这里仅仅展示相关命令：</p>
-<div class="codehilite"><pre><span></span>aria2c -x <span class="m">16</span> https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-2019.03-Linux-x86_64.sh
+<div class="codehilite"><pre><span></span><code>aria2c -x <span class="m">16</span> https://mirrors.tuna.tsinghua.edu.cn/anaconda/archive/Anaconda3-2019.03-Linux-x86_64.sh
 bash Anaconda3-2019.03-Linux-x86_64.sh
 
 <span class="c1"># 回车，然后按 q 退出 EULA</span>
@@ -2191,11 +2191,11 @@ by running conda init? <span class="o">[</span>yes<span class="p">|</span>no<spa
 ......
 
 Thank you <span class="k">for</span> installing Anaconda3!
-</pre></div>
+</code></pre></div>
 
 
 <p>安装完成以后，如果你使用的是bash，就不需要配置环境变量，如果你使用的是zsh，那么你还需要<a href="../python-environment/#pei-zhi-huan-jing-bian-liang">配置环境变量</a>。</p>
-<div class="codehilite"><pre><span></span>nano ~/.zshrc
+<div class="codehilite"><pre><span></span><code>nano ~/.zshrc
 
 <span class="c1"># 添加下面的内容</span>
 
@@ -2213,7 +2213,7 @@ Thank you <span class="k">for</span> installing Anaconda3!
 <span class="k">fi</span>
 <span class="nb">unset</span> __conda_setup
 <span class="c1"># &lt;&lt;&lt; conda initialize &lt;&lt;&lt;</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>配置好以后，可以重启机器，或者使用 <code class="codehilite"><span class="err">source ~/.zshrc</span></code> <a href="../linux-command/#source">更新环境变量</a>。</p>
@@ -2224,34 +2224,34 @@ Thank you <span class="k">for</span> installing Anaconda3!
 <li><a href="https://opsx.alibaba.com/mirror">https://opsx.alibaba.com/mirror</a></li>
 </ul>
 <p>下面以清华大学开源软件镜像站为例：</p>
-<div class="codehilite"><pre><span></span>pip config <span class="nb">set</span> global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
-</pre></div>
+<div class="codehilite"><pre><span></span><code>pip config <span class="nb">set</span> global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+</code></pre></div>
 
 
 <h3 id="python">Python 库</h3>
 <p>使用下面的命令安装<a href="../python-environment/#python-ku">常用 Python 库</a>：</p>
-<div class="codehilite"><pre><span></span>pip install jupyter jupyter_contrib_nbextensions numpy pandas scikit-learn matplotlib opencv-python pillow tqdm torch torchvision tensorflow-gpu keras tensorboardx xlrd openpyxl
-</pre></div>
+<div class="codehilite"><pre><span></span><code>pip install jupyter jupyter_contrib_nbextensions numpy pandas scikit-learn matplotlib opencv-python pillow tqdm torch torchvision tensorflow-gpu keras tensorboardx xlrd openpyxl
+</code></pre></div>
 
 
 <h3 id="pytorch">测试 PyTorch</h3>
-<div class="codehilite"><pre><span></span><span class="kn">import</span> <span class="nn">torch</span>
+<div class="codehilite"><pre><span></span><code><span class="kn">import</span> <span class="nn">torch</span>
 <span class="n">dummy</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
 <span class="n">conv</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Conv2d</span><span class="p">(</span><span class="n">in_channels</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">out_channels</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">kernel_size</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">cuda</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">conv</span><span class="p">(</span><span class="n">dummy</span><span class="p">))</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>期望输出：</p>
-<div class="codehilite"><pre><span></span><span class="n">tensor</span><span class="p">([[[[</span><span class="mf">0.0443</span><span class="p">,</span> <span class="mf">0.0443</span><span class="p">,</span> <span class="mf">0.0443</span><span class="p">],</span>
+<div class="codehilite"><pre><span></span><code><span class="n">tensor</span><span class="p">([[[[</span><span class="mf">0.0443</span><span class="p">,</span> <span class="mf">0.0443</span><span class="p">,</span> <span class="mf">0.0443</span><span class="p">],</span>
           <span class="p">[</span><span class="mf">0.0443</span><span class="p">,</span> <span class="mf">0.0443</span><span class="p">,</span> <span class="mf">0.0443</span><span class="p">],</span>
           <span class="p">[</span><span class="mf">0.0443</span><span class="p">,</span> <span class="mf">0.0443</span><span class="p">,</span> <span class="mf">0.0443</span><span class="p">]]]],</span> <span class="n">device</span><span class="o">=</span><span class="s1">&#39;cuda:0&#39;</span><span class="p">,</span>
        <span class="n">grad_fn</span><span class="o">=&lt;</span><span class="n">CudnnConvolutionBackward</span><span class="o">&gt;</span><span class="p">)</span>
-</pre></div>
+</code></pre></div>
 
 
 <h3 id="tensorflow">测试 TensorFlow</h3>
-<div class="codehilite"><pre><span></span>import tensorflow as tf
+<div class="codehilite"><pre><span></span><code>import tensorflow as tf
 <span class="nv">mnist</span> <span class="o">=</span> tf.keras.datasets.mnist
 
 <span class="o">(</span>x_train, y_train<span class="o">)</span>,<span class="o">(</span>x_test, y_test<span class="o">)</span> <span class="o">=</span> mnist.load_data<span class="o">()</span>
@@ -2269,11 +2269,11 @@ model.compile<span class="o">(</span><span class="nv">optimizer</span><span clas
 
 model.fit<span class="o">(</span>x_train, y_train, <span class="nv">epochs</span><span class="o">=</span><span class="m">5</span><span class="o">)</span>
 model.evaluate<span class="o">(</span>x_test, y_test<span class="o">)</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>期望输出（注意里面的 GeForce GTX 1080 Ti） ：</p>
-<div class="codehilite"><pre><span></span>&gt;&gt;&gt; model.fit(x_train, y_train, epochs=5)
+<div class="codehilite"><pre><span></span><code>&gt;&gt;&gt; model.fit(x_train, y_train, epochs=5)
 2019-07-21 17:18:16.455944: I tensorflow/core/platform/cpu_feature_guard.cc:142] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX2 FMA
 2019-07-21 17:18:16.460577: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 3599995000 Hz
 2019-07-21 17:18:16.461013: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x5606e83e4f40 executing computations on platform Host. Devices:
@@ -2320,7 +2320,7 @@ Epoch 5/5
 &gt;&gt;&gt; model.evaluate(x_test, y_test)
 10000/10000 [==============================] - 0s 24us/sample - loss: 0.0698 - acc: 0.9804
 [0.06983174340333789, 0.9804]
-</pre></div>
+</code></pre></div>
                 
                   
                 
@@ -2383,22 +2383,22 @@ Epoch 5/5
           </div>
         
         powered by
-        <a href="https://www.mkdocs.org">MkDocs</a>
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
         and
-        <a href="https://squidfunk.github.io/mkdocs-material/">
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
           Material for MkDocs</a>
       </div>
       
   <div class="md-footer-social">
     <link rel="stylesheet" href="../assets/fonts/font-awesome.css">
     
-      <a href="https://github.com/ypwhs" class="md-footer-social__link fa fa-github"></a>
+      <a href="https://github.com/ypwhs" target="_blank" rel="noopener" title="github" class="md-footer-social__link fa fa-github"></a>
     
-      <a href="https://www.zhihu.com/people/yangpw" class="md-footer-social__link fa fa-book"></a>
+      <a href="https://www.zhihu.com/people/yangpw" target="_blank" rel="noopener" title="book" class="md-footer-social__link fa fa-book"></a>
     
-      <a href="https://ypw.io" class="md-footer-social__link fa fa-globe"></a>
+      <a href="https://ypw.io" target="_blank" rel="noopener" title="globe" class="md-footer-social__link fa fa-globe"></a>
     
-      <a href="https://www.linkedin.com/in/ypwhs/" class="md-footer-social__link fa fa-linkedin"></a>
+      <a href="https://www.linkedin.com/in/ypwhs/" target="_blank" rel="noopener" title="linkedin" class="md-footer-social__link fa fa-linkedin"></a>
     
   </div>
 
@@ -2408,7 +2408,7 @@ Epoch 5/5
       
     </div>
     
-      <script src="../assets/javascripts/application.808e90bb.js"></script>
+      <script src="../assets/javascripts/application.c33a9706.js"></script>
       
         
         

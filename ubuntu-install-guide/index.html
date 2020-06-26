@@ -2205,13 +2205,13 @@ Thank you <span class="k">for</span> installing Anaconda3!
 
 <p>配置好以后，可以重启机器，或者使用 <code>source ~/.zshrc</code> <a href="../linux-command/#source">更新环境变量</a>。</p>
 <h3 id="pip">配置 pip 源</h3>
-<p>在使用 pip 的时候有可能因为网络原因导致安装过慢或失败，这时候可以配置一些 pip 源：</p>
+<p>在使用 pip 的时候有可能因为网络原因导致安装过慢或失败，这时候可以<a href="../python-environment/#pip">配置国内的 pip 源</a>：</p>
 <ul>
-<li><a href="https://mirror.tuna.tsinghua.edu.cn/help/pypi/">https://mirror.tuna.tsinghua.edu.cn/help/ubuntu/</a></li>
-<li><a href="https://opsx.alibaba.com/mirror">https://opsx.alibaba.com/mirror</a></li>
+<li><a href="https://developer.aliyun.com/mirror/pypi">https://developer.aliyun.com/mirror/pypi</a></li>
+<li><a href="https://mirror.tuna.tsinghua.edu.cn/help/pypi/">https://mirror.tuna.tsinghua.edu.cn/help/pypi/</a></li>
 </ul>
-<p>下面以清华大学开源软件镜像站为例：</p>
-<div class="codehilite"><pre><span></span><code>pip config <span class="nb">set</span> global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+<p>下面以阿里云为例：</p>
+<div class="codehilite"><pre><span></span><code>pip config <span class="nb">set</span> global.index-url https://mirrors.aliyun.com/pypi/simple/
 </code></pre></div>
 
 
